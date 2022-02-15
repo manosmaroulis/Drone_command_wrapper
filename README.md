@@ -4,11 +4,13 @@ A C++ wrapper to command an autonomous vehicle using mavlink protocol via serial
 The drone_command_test.cpp file is an experiment I did, feel free to modify it.
 
 * To build:
+
         mkdir build && cd build
         make
 
 
 * To run go to the build directory and type:
+
       ./drone_command_test
 
 
