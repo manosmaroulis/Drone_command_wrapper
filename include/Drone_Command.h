@@ -35,7 +35,6 @@
 // Mavlink related library
 #include "serial_port.h"
 #include <common/mavlink.h>
-#include <ardupilotmega/ardupilotmega.h>
 #include <unistd.h>
 #include <thread>
 #include <mutex>
