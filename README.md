@@ -6,6 +6,7 @@ The drone_command_test.cpp file is an experiment I did, feel free to modify it.
 * To build, type in terminal:
 
         mkdir build && cd build
+        cmake ..
         make
 
 
