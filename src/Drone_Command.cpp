@@ -104,7 +104,7 @@ int Drone_Command::enable_msg_interval(int msg_id){
 
 // MAVLINK_MSG_ID_GLOBAL_POSITION_INT
 	//param 2 = rate, default_rate =0
-	int len = send_command(system_id,component_id,MAV_CMD_SET_MESSAGE_INTERVAL,true,msg_id,0);
+	int len = send_command(system_id,component_id,MAV_CMD_SET_MESSAGE_INTERVAL,true,msg_id,1);
 
 	return len;
 }
