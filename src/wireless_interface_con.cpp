@@ -56,7 +56,7 @@ void wireless_interface_con::find_interfaces(){
                     host, NI_MAXHOST,
                     NULL, 0, NI_NUMERICHOST);
             if (s != 0) {
-                printf("getnameinfo() failed: %s\n", gai_strerror(s));
+                // printf("getnameinfo() failed: %s\n", gai_strerror(s));
                 std::cout<<"getnameinfo() failed:"<< gai_strerror(s)<<"\n";
                 return;
             }

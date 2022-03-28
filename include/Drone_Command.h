@@ -39,6 +39,7 @@
 #include <thread>
 #include <mutex>
 #include <iostream>
+#include <fstream>
 
 
 // Mavlink additional define
@@ -115,11 +116,16 @@ class Drone_Command
 		// OPERATION MUTEX (CURRENTLY SERIAL READ/WRITE)
 		std::mutex rw_mtx;
 
+		//file descriptor for logging
+		std::ofstream gps_file;
+
+
 
 	public:
 		// Constructor:
 		Drone_Command();
 
+		~Drone_Command();
 		//WAIT FOR A HEARTBIT BEFORE PROCEEDING TO ANY ACTIVITY
 		void get_heartbit();
 		

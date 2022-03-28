@@ -1,8 +1,9 @@
 {
+	"archive" : {},
 	"artifacts" : 
 	[
 		{
-			"path" : "drone_command_test"
+			"path" : "libDrone_command.a"
 		}
 	],
 	"backtrace" : 1,
@@ -10,8 +11,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
-			"target_link_libraries",
+			"add_library",
 			"include_directories"
 		],
 		"files" : 
@@ -26,19 +26,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 13,
+				"line" : 15,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 15,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 14,
+				"line" : 18,
 				"parent" : 0
 			}
 		]
@@ -46,18 +40,24 @@
 	"compileGroups" : 
 	[
 		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				}
+			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 2,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 2,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/include"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 2,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0"
 				}
 			],
@@ -71,25 +71,9 @@
 			]
 		}
 	],
-	"id" : "drone_command_test::@6890427a1f51a3e7e1df",
-	"link" : 
-	{
-		"commandFragments" : 
-		[
-			{
-				"fragment" : "",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "-lpthread",
-				"role" : "libraries"
-			}
-		],
-		"language" : "CXX"
-	},
-	"name" : "drone_command_test",
-	"nameOnDisk" : "drone_command_test",
+	"id" : "Drone_command::@6890427a1f51a3e7e1df",
+	"name" : "Drone_command",
+	"nameOnDisk" : "libDrone_command.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -119,12 +103,6 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/drone_command_test.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
 			"path" : "src/serial_port.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -133,7 +111,13 @@
 			"compileGroupIndex" : 0,
 			"path" : "src/wireless_interface_con.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/iperf_wrapper.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
-	"type" : "EXECUTABLE"
+	"type" : "STATIC_LIBRARY"
 }

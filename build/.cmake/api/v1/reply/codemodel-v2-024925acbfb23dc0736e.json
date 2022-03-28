@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.21"
@@ -15,11 +15,12 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -30,7 +31,8 @@
 					"name" : "Drone_command",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -38,8 +40,15 @@
 			[
 				{
 					"directoryIndex" : 0,
+					"id" : "Drone_command::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Drone_command-Debug-a0689783cfa3c8d69ad4.json",
+					"name" : "Drone_command",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "drone_command_test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-drone_command_test-df93394d8af6cc5dbd00.json",
+					"jsonFile" : "target-drone_command_test-Debug-4099f14c18cbb98953d8.json",
 					"name" : "drone_command_test",
 					"projectIndex" : 0
 				}

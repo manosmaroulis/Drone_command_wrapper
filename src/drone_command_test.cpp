@@ -3,25 +3,47 @@
 #include "wireless_interface_con.h"
 // to compile: g++ -I mavlink/include/mavlink/v2.0 class_rover_test.cpp serial_port.cpp rover.cpp -o class
  
-#include <sys/stat.h>
+// #include <sys/stat.h>
+#include "iperf_wrapper.h"
+// #define MIN_LEN 200
 
-#define MIN_LEN 200
+// long GetFileSize(std::string filename)
+// {
+//     struct stat stat_buf;
+//     int rc = stat(filename.c_str(), &stat_buf);
+//     return rc == 0 ? stat_buf.st_size : -1;
+// }
 
-long GetFileSize(std::string filename)
+
+int main(int argc, char**argv)
 {
-    struct stat stat_buf;
-    int rc = stat(filename.c_str(), &stat_buf);
-    return rc == 0 ? stat_buf.st_size : -1;
-}
 
+	
+	bool is_server;
+	std::string iperf_file;
+	std::string server_ip;
+	if(argc<3){
+		std::cout<<RED<<"TOO FEW ARGUMENTS\n"<<RESET;
+		return -1;
+	}else{
 
-int main()
-{
+		iperf_file = std::string(argv[1]);
+		is_server= std::string(argv[2])=="1"?true:false;
+		server_ip=std::string(argv[3]);
+	}
+	
+	char c;
 	Drone_Command dc_A;
 	wireless_interface_con wic;
 	signalInfo sigInfo;
-	std::string iperf_file_name = "iperf.txt";
+	// add date to iperf
 
+
+
+	std::string iperf_file_name = std::string(argv[1]);
+
+
+	iperf_wrapper wrpr(iperf_file,is_server,server_ip);
 	
 
 	printf("Waiting for heartbit\n");
@@ -44,7 +66,7 @@ int main()
 	auto names = wic.get_wlan_names();
 
 	for(auto& name: names){
-		char* c_name = &name[0];
+		char* c_name = &name[0];//CHANGE THIS TO HARDCODE WIFI INTERFACE
 		int result = wic.getSignalInfo(&sigInfo,c_name);
 
 		if(result==1){
@@ -65,31 +87,33 @@ int main()
 		// arm(1);
 		dc_A.send_arm_command(1);
 		// wait to get an ack
-		std::this_thread::sleep_for(std::chrono::microseconds(10000));
+		std::this_thread::sleep_for(std::chrono::microseconds(1000000));
 		arm_state = dc_A.get_armed();
 		// num_tries++;
 	}
 
 	//////////////////////////IPERF COMMAND
-	long starting_len = GetFileSize(iperf_file_name);
-	//make sure to get past initialization bytes
-    while(starting_len<MIN_LEN){
-        starting_len = GetFileSize(iperf_file_name);
-    }
+	wrpr.iperf_start();
+
+	// long starting_len = GetFileSize(iperf_file_name);
+	// //make sure to get past initialization bytes
+    // while(starting_len<MIN_LEN){
+    //     starting_len = GetFileSize(iperf_file_name);
+    // }
 
 	// When the iperf starts file size will get bigger
-    while(true){
+    // while(true){
         
-        long len = GetFileSize(iperf_file_name);
-        // cout<<len<<"\n";
+    //     long len = GetFileSize(iperf_file_name);
+    //     // cout<<len<<"\n";
         
-        if(len>starting_len)
-            break;
+    //     if(len>starting_len)
+    //         break;
 
-		std::this_thread::sleep_for(std::chrono::microseconds(5000));
-    }
+	// 	std::this_thread::sleep_for(std::chrono::microseconds(5000));
+    // }
 
-	std::cout<<GREEN<<"IPERF COMMAND STARTED\n"<<RESET;
+	// std::cout<<GREEN<<"IPERF COMMAND STARTED\n"<<RESET;
 	///////////////////////////////////////////////////
 
 
@@ -97,17 +121,30 @@ int main()
 	
 	// int counter =0;
 	// while(counter<5){
-		dc_A.mission_start();
+	dc_A.mission_start();
 		// counter++;
 	// }
 
-	getchar();
+
+
+	std::cout<<RED<<"PRESS ANY KEY TO END MISSION\n"<<RESET;
+	
+	c=getchar();
+	while(c!='q'){
+		c=getchar();
+	}
+
+	std::cout<<GREEN<<"APPLICATION EXITING\n"<<RESET;
+	
+
 	// counter =0;
 	// while(counter<3){
 	// 	dc_A.hold_to_waypoint();
 
 	// 	counter++;
 	// }
+	dc_A.send_arm_command(0);
+	wrpr.iperf_stop();
 
 	dc_A.request_termination();
 	receiver_thread.join();

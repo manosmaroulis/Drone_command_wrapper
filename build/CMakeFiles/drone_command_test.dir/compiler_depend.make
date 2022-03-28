@@ -440,7 +440,12 @@ CMakeFiles/drone_command_test.dir/src/Drone_Command.cpp.o: ../src/Drone_Command.
   /usr/include/c++/9/bits/basic_ios.tcc \
   /usr/include/c++/9/bits/ostream.tcc \
   /usr/include/c++/9/istream \
-  /usr/include/c++/9/bits/istream.tcc
+  /usr/include/c++/9/bits/istream.tcc \
+  /usr/include/c++/9/fstream \
+  /usr/include/c++/9/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h \
+  /usr/include/c++/9/bits/fstream.tcc
 
 CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o: ../src/drone_command_test.cpp \
   /usr/include/stdc-predef.h \
@@ -926,7 +931,13 @@ CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o: ../src/drone_com
   /usr/include/c++/9/vector \
   /usr/include/c++/9/bits/stl_vector.h \
   /usr/include/c++/9/bits/stl_bvector.h \
-  /usr/include/c++/9/bits/vector.tcc
+  /usr/include/c++/9/bits/vector.tcc \
+  /usr/include/x86_64-linux-gnu/sys/stat.h \
+  /usr/include/x86_64-linux-gnu/bits/statx.h \
+  /usr/include/linux/stat.h \
+  /usr/include/x86_64-linux-gnu/bits/statx-generic.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h
 
 CMakeFiles/drone_command_test.dir/src/serial_port.cpp.o: ../src/serial_port.cpp \
   /usr/include/stdc-predef.h \
@@ -1481,6 +1492,10 @@ CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o: ../src/wirel
 
 ../src/serial_port.cpp:
 
+/usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h:
+
+/usr/include/linux/stat.h:
+
 /usr/include/c++/9/bits/vector.tcc:
 
 /usr/include/rpc/netdb.h:
@@ -1488,8 +1503,6 @@ CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o: ../src/wirel
 /usr/include/netdb.h:
 
 /usr/include/asm-generic/ioctl.h:
-
-/usr/include/linux/ioctl.h:
 
 /usr/include/x86_64-linux-gnu/asm/ioctls.h:
 
@@ -1515,11 +1528,19 @@ CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o: ../src/wirel
 
 /usr/include/linux/types.h:
 
-/usr/include/linux/wireless.h:
-
 ../include/wireless_interface_con.h:
 
 ../src/drone_command_test.cpp:
+
+/usr/include/linux/ioctl.h:
+
+/usr/include/c++/9/bits/fstream.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h:
+
+/usr/include/linux/wireless.h:
+
+/usr/include/c++/9/fstream:
 
 /usr/include/c++/9/istream:
 
@@ -1577,11 +1598,15 @@ CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o: ../src/wirel
 
 /usr/include/c++/9/string:
 
+/usr/include/x86_64-linux-gnu/bits/statx-generic.h:
+
 /usr/include/c++/9/stdexcept:
 
 /usr/include/c++/9/array:
 
 /usr/include/c++/9/initializer_list:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_statx.h:
 
 /usr/include/linux/if.h:
 
@@ -1751,6 +1776,8 @@ CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o: ../src/wirel
 
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_extended_sys_state.h:
 
+/usr/include/x86_64-linux-gnu/sys/stat.h:
+
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_home_position.h:
 
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_vibration.h:
@@ -1772,6 +1799,8 @@ CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o: ../src/wirel
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_control_system_state.h:
 
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_follow_target.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h:
 
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_scaled_pressure3.h:
 
@@ -2091,6 +2120,8 @@ CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o: ../src/wirel
 
 ../include/Drone_Command.h:
 
+/usr/include/c++/9/bits/codecvt.h:
+
 /usr/include/features.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
@@ -2134,6 +2165,8 @@ CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o: ../src/wirel
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_param_request_read.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/statx.h:
 
 /usr/include/unistd.h:
 

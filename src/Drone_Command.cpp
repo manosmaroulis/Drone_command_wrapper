@@ -22,6 +22,16 @@ Drone_Command::Drone_Command():serial_port((char*)UARTNAME, BAUDRATE),companion_
 	
 	cout<<GREEN<<"Drone_Command serial connection established\n"<<RESET;
 	is_not_end = true;
+
+	gps_file.open("gps_log.txt");
+	gps_file<<"LAT "<< "LON "<<"ALT "<<"TIME SINCE BOOT \n";
+}
+
+
+Drone_Command::~Drone_Command(){
+	gps_file.flush();
+	gps_file.close();
+	serial_port.stop();
 }
 
 bool Drone_Command::termination_is_requested(){
@@ -251,6 +261,7 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 			cout<<"ALT: "<<global_pos.alt<<"\n";
 			cout<<"LONG: "<<global_pos.lon<<"\n";
 			cout<<"LAT: "<< global_pos.lat<<"\n";
+			gps_file <<global_pos.lat<<" "<< global_pos.lon<<" "<<global_pos.alt<<global_pos.time_boot_ms<<"\n";
 
 			res = message_result(0,-1,-1);
 			return res;
