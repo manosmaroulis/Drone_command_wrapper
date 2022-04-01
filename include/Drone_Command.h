@@ -40,7 +40,7 @@
 #include <mutex>
 #include <iostream>
 #include <fstream>
-
+#include<atomic>
 
 // Mavlink additional define
 #define GUIDED 15
@@ -100,6 +100,10 @@ class Drone_Command
 		// DRONE CURRENT MODE
 		uint8_t r_mode;
 
+		//DRONE LANDED STATE
+		// int landed_state;
+		std::atomic<int>landed_state;
+
 		int system_id;
 		// COMPONENT TO WHICH A MSG/CMD IS ADDRESSED TO, broadcast = 0
 		int component_id;
@@ -134,6 +138,11 @@ class Drone_Command
 		
 		// Get armed state of the Vehicle:
 		int get_armed();
+
+
+		// Get land state of drone air/ground/landig/taking off
+
+		int get_landed_state();
 		
 		//USED INTERNALLY TO CHANGE STATE, USER SHOULD USE send_arm_command(int state)
 		void arm(bool state); //true is armed false is disarmed

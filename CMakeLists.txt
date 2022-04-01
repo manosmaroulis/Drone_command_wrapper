@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.18)
 project(Drone_command)
 set (INCLUDE_DIR include/)
 # set(HEADER_FILES include/"*.h")

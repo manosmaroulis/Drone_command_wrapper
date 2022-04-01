@@ -12,7 +12,15 @@
 //     struct stat stat_buf;
 //     int rc = stat(filename.c_str(), &stat_buf);
 //     return rc == 0 ? stat_buf.st_size : -1;
+
 // }
+
+void close_app(){
+
+
+}
+
+
 
 
 int main(int argc, char**argv)
@@ -22,6 +30,8 @@ int main(int argc, char**argv)
 	bool is_server;
 	std::string iperf_file;
 	std::string server_ip;
+	std::string bw;
+	
 	if(argc<3){
 		std::cout<<RED<<"TOO FEW ARGUMENTS\n"<<RESET;
 		return -1;
@@ -30,33 +40,34 @@ int main(int argc, char**argv)
 		iperf_file = std::string(argv[1]);
 		is_server= std::string(argv[2])=="1"?true:false;
 		server_ip=std::string(argv[3]);
+		bw =std::string(argv[4]);
 	}
 	
 	char c;
 	Drone_Command dc_A;
 	wireless_interface_con wic;
 	signalInfo sigInfo;
-	// add date to iperf
+	int drone_landed_state = 0;
 
 
+	// std::string iperf_file_name = std::string(argv[1]);
 
-	std::string iperf_file_name = std::string(argv[1]);
 
-
-	iperf_wrapper wrpr(iperf_file,is_server,server_ip);
+	iperf_wrapper wrpr(iperf_file,is_server,server_ip,bw);
 	
-
+	dc_A.enable_msg_interval(MAVLINK_MSG_ID_HEARTBEAT);
+	
+	// MAVLINK_MSG_ID_EXTENDED_SYS_STATE
 	printf("Waiting for heartbit\n");
 	dc_A.get_heartbit();
 
-	//enable gps readings
-	dc_A.enable_msg_interval(MAVLINK_MSG_ID_GLOBAL_POSITION_INT);
 	
 	/*Start a background thread to receive messages*/
+
 	std::thread receiver_thread([&](){
 		while(!dc_A.termination_is_requested()){
 			dc_A.recv_data();
-			std::this_thread::sleep_for(std::chrono::microseconds(5000));
+			// std::this_thread::sleep_for(std::chrono::microseconds(5000));
 		}
 	});
 
@@ -66,11 +77,14 @@ int main(int argc, char**argv)
 	auto names = wic.get_wlan_names();
 
 	for(auto& name: names){
+		
 		char* c_name = &name[0];//CHANGE THIS TO HARDCODE WIFI INTERFACE
+					   //"wlan0"
+		
 		int result = wic.getSignalInfo(&sigInfo,c_name);
 
 		if(result==1){
-			printf("Connection established");
+			printf("Connection established\n");
 			sigInfo.print();
 		}
 	}
@@ -78,76 +92,82 @@ int main(int argc, char**argv)
 
 
 	printf("Arming...\n");
-	// int num_tries =0;
+
 	int arm_state = dc_A.get_armed();
 
 	
 
-	while(arm_state!=1 /*&& num_tries!=3*/){
-		// arm(1);
+	// while(arm_state!=1 ){
 		dc_A.send_arm_command(1);
 		// wait to get an ack
 		std::this_thread::sleep_for(std::chrono::microseconds(1000000));
 		arm_state = dc_A.get_armed();
-		// num_tries++;
-	}
+	// }
 
 	//////////////////////////IPERF COMMAND
 	wrpr.iperf_start();
-
-	// long starting_len = GetFileSize(iperf_file_name);
-	// //make sure to get past initialization bytes
-    // while(starting_len<MIN_LEN){
-    //     starting_len = GetFileSize(iperf_file_name);
-    // }
-
-	// When the iperf starts file size will get bigger
-    // while(true){
-        
-    //     long len = GetFileSize(iperf_file_name);
-    //     // cout<<len<<"\n";
-        
-    //     if(len>starting_len)
-    //         break;
-
-	// 	std::this_thread::sleep_for(std::chrono::microseconds(5000));
-    // }
-
-	// std::cout<<GREEN<<"IPERF COMMAND STARTED\n"<<RESET;
-	///////////////////////////////////////////////////
+	dc_A.enable_msg_interval(MAVLINK_MSG_ID_GLOBAL_POSITION_INT);
 
 
-	printf("Starting mission...\n");
+	std::cout<<GREEN<<"STARTING MISSION\n"<<RESET;
 	
-	// int counter =0;
-	// while(counter<5){
+	
+	
+
 	dc_A.mission_start();
-		// counter++;
+
+
+
+	// std::cout<<RED<<"PRESS q KEY TO END MISSION\n"<<RESET;
+	
+	// c=getchar();
+	// while(c!='q'){
+	// 	c=getchar();
 	// }
 
-
-
-	std::cout<<RED<<"PRESS ANY KEY TO END MISSION\n"<<RESET;
 	
-	c=getchar();
-	while(c!='q'){
+	std::this_thread::sleep_for(std::chrono::seconds(10));
+
+	drone_landed_state = dc_A.get_landed_state();
+	
+	if(drone_landed_state==MAV_LANDED_STATE_ON_GROUND)
+	{
+		std::cout<<RED<<" Drone did not start PRESS q KEY TO END MISSION or c to continue\n"<<RESET;
 		c=getchar();
+		if(c=='q'){
+			dc_A.send_arm_command(0);
+			wrpr.iperf_stop();
+
+			dc_A.request_termination();
+			receiver_thread.join();
+			std::cout<<GREEN<<"APPLICATION EXITING\n"<<RESET;
+			return 0;
+		}
+	}
+	// if(drone_landed_state==MAV_LANDED_STATE_TAKEOFF||drone_landed_state==MAV_LANDED_STATE_IN_AIR)
+
+	while (true)
+	{
+
+		drone_landed_state = dc_A.get_landed_state();
+		if(drone_landed_state==MAV_LANDED_STATE_ON_GROUND){
+			break;
+		}
+		else{
+			std::this_thread::sleep_for(std::chrono::seconds(5));
+		}
 	}
 
-	std::cout<<GREEN<<"APPLICATION EXITING\n"<<RESET;
 	
 
-	// counter =0;
-	// while(counter<3){
-	// 	dc_A.hold_to_waypoint();
 
-	// 	counter++;
-	// }
+	std::cout<<GREEN<<"DRONE LANDED\n"<<RESET;
 	dc_A.send_arm_command(0);
 	wrpr.iperf_stop();
 
 	dc_A.request_termination();
 	receiver_thread.join();
+	std::cout<<GREEN<<"APPLICATION EXITING\n"<<RESET;
 	
 	return(0);
 }

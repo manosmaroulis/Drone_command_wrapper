@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Drone_Command::Drone_Command():serial_port((char*)UARTNAME, BAUDRATE),companion_id(0),system_id(-1),component_id(-1)
+Drone_Command::Drone_Command():serial_port((char*)UARTNAME, BAUDRATE),companion_id(0),system_id(-1),component_id(-1),landed_state(0)
 {
 	//initialisation of the serial communication:
 	cout<<GREEN<<"Serial - interface start\n"<<RESET;
@@ -76,6 +76,12 @@ int Drone_Command::get_armed()
 	return(r_armed);
 }
 
+int Drone_Command::get_landed_state(){
+
+
+	return landed_state.load(std::memory_order_relaxed);
+}
+
 void Drone_Command::arm(bool state){ 
 	std::lock_guard<std::mutex> lock(mtx);
 	if(state)
@@ -104,7 +110,12 @@ int Drone_Command::send_command(uint8_t target_system,uint8_t target_component,u
 	
 	//decouple reader writer
 	std::lock_guard<std::mutex> lock(rw_mtx);
+	
 	int len = serial_port.write_message(msg);
+	if(len == 0){
+		std::cout<<RED<<"COULD NOT WRITE COMMAND "<<command<<".Trying again..\n"<<RESET;
+	}
+	len = serial_port.write_message(msg);
 
 	return len;
 }
@@ -114,8 +125,8 @@ int Drone_Command::enable_msg_interval(int msg_id){
 
 // MAVLINK_MSG_ID_GLOBAL_POSITION_INT
 	//param 2 = rate, default_rate =0
-	int len = send_command(system_id,component_id,MAV_CMD_SET_MESSAGE_INTERVAL,true,msg_id,1);
-
+	int len = send_command(system_id,component_id,MAV_CMD_SET_MESSAGE_INTERVAL,true,msg_id,1000000);
+	
 	return len;
 }
 
@@ -147,7 +158,7 @@ int Drone_Command::hold_to_waypoint(){
 	// hold.command = MAV_CMD_NAV_LOITER_UNLIM;
 	// hold.confirmation = true;
 	// hold.param3 =  //Radius around mission in meters
-	//hold.param4 = // desired yaw angle
+	// hold.param4 = // desired yaw angle
 	// hold.param5 = // latitude
 	// hold.param6 = //longitude
 	// hold.param7 = attitude
@@ -253,20 +264,48 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 			return (res);
 		}
 		case MAVLINK_MSG_ID_GLOBAL_POSITION_INT:
-
+		{
 			mavlink_global_position_int_t global_pos;
 			mavlink_msg_global_position_int_decode(msg,&global_pos);
 			cout<<GREEN<<"GPS READING\n"<<RESET;
-			cout<<"TIME SINCE BOOT: "<<global_pos.time_boot_ms<<"\n";
-			cout<<"ALT: "<<global_pos.alt<<"\n";
-			cout<<"LONG: "<<global_pos.lon<<"\n";
-			cout<<"LAT: "<< global_pos.lat<<"\n";
-			gps_file <<global_pos.lat<<" "<< global_pos.lon<<" "<<global_pos.alt<<global_pos.time_boot_ms<<"\n";
-
+			// cout<<"TIME SINCE BOOT: "<<global_pos.time_boot_ms<<"\n";
+			// cout<<"ALT: "<<global_pos.alt<<"\n";
+			// cout<<"LONG: "<<global_pos.lon<<"\n";
+			// cout<<"LAT: "<< global_pos.lat<<"\n";
+			gps_file <<global_pos.lat<<" "<< global_pos.lon<<" "<<global_pos.alt<<" "<<global_pos.time_boot_ms<<"\n";
+			gps_file.flush();
 			res = message_result(0,-1,-1);
 			return res;
-			
+		}	
+		case MAVLINK_MSG_ID_EXTENDED_SYS_STATE:
+		{
+			mavlink_extended_sys_state_t sys_state;
+			mavlink_msg_extended_sys_state_decode(msg,&sys_state);
+			cout<<GREEN<<"EXTENDED STATE\n"<<RESET;
 
+			if(sys_state.landed_state!=landed_state){
+				landed_state.store(sys_state.landed_state,std::memory_order_relaxed);	
+			}
+
+			if(sys_state.landed_state==MAV_LANDED_STATE_IN_AIR){
+
+				cout<<GREEN<<"system is on air\n"<<RESET;
+
+			}else if(sys_state.landed_state==MAV_LANDED_STATE_ON_GROUND){
+				
+				cout<<GREEN<<"system is on ground\n"<<RESET;
+
+			}else if(sys_state.landed_state==MAV_LANDED_STATE_LANDING){
+				
+				cout<<GREEN<<"system is landing\n"<<RESET;
+
+			}else if(sys_state.landed_state==MAV_LANDED_STATE_TAKEOFF){
+
+				cout<<GREEN<<"system is taking off\n"<<RESET;
+
+			}
+
+		}
 		default:
 		{
 			// printf("Warning, did not handle message id %i\n",msg->msgid);

@@ -13,14 +13,15 @@ long GetFileSize(std::string filename)
 
 
 
-iperf_wrapper::iperf_wrapper(std::string file_name,bool server,std::string server_ip):
-iperf_file_name(file_name)
+iperf_wrapper::iperf_wrapper(std::string file_name,bool server,std::string server_ip,std::string bandwidth):
+iperf_file_name(file_name),bw(bandwidth)
 {
 
     if(server){
         command = "iperf -s -u -i 1 > "+file_name;
     }else{
-        command = "iperf -c "+server_ip+" -u  -b 10M -t 10000 -i 1 >"+file_name;
+
+        command = "iperf -c "+server_ip+" -u  -b "+bandwidth+"M -t 10000 -i 1 >"+file_name;
     }
 
 }
@@ -42,6 +43,7 @@ void iperf_wrapper::iperf_start(){
     std::this_thread::sleep_for(std::chrono::microseconds(10000));
     //wait for the command to start
     starting_len=GetFileSize(iperf_file_name);
+    std::cout<<"start_len "<< starting_len<<"\n";
     assert(starting_len!=-1);
     while (starting_len<MIN_LEN)
     {
@@ -65,8 +67,10 @@ void iperf_wrapper::iperf_start(){
 
 void iperf_wrapper::iperf_stop(){
     //end the iperf process
-    system("kill -9 $(ps aux | grep 'iperf' | awk '{print $2}')");
+    // system("kill -9 $(ps aux | grep 'iperf' | awk '{print $2}')");
+    system("pkill iperf");
     iperf_thread->join();
+    std::cout<<"Thread finished\n";
 
 }
 

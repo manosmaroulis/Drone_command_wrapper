@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/drone_command_test.dir/src/Drone_Command.cpp.o CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o CMakeFiles/drone_command_test.dir/src/serial_port.cpp.o CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o -o drone_command_test  -lpthread 
+/usr/bin/c++ CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o -o drone_command_test  libDrone_command.a -lpthread 

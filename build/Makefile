@@ -129,12 +129,25 @@ drone_command_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/build
 .PHONY : drone_command_test/fast
 
+#=============================================================================
+# Target rules for targets named Drone_command
+
+# Build rule for target.
+Drone_command: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Drone_command
+.PHONY : Drone_command
+
+# fast build rule for target.
+Drone_command/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/build
+.PHONY : Drone_command/fast
+
 src/Drone_Command.o: src/Drone_Command.cpp.o
 .PHONY : src/Drone_Command.o
 
 # target to build an object file
 src/Drone_Command.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/Drone_Command.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o
 .PHONY : src/Drone_Command.cpp.o
 
 src/Drone_Command.i: src/Drone_Command.cpp.i
@@ -142,7 +155,7 @@ src/Drone_Command.i: src/Drone_Command.cpp.i
 
 # target to preprocess a source file
 src/Drone_Command.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/Drone_Command.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.i
 .PHONY : src/Drone_Command.cpp.i
 
 src/Drone_Command.s: src/Drone_Command.cpp.s
@@ -150,7 +163,7 @@ src/Drone_Command.s: src/Drone_Command.cpp.s
 
 # target to generate assembly for a file
 src/Drone_Command.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/Drone_Command.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.s
 .PHONY : src/Drone_Command.cpp.s
 
 src/drone_command_test.o: src/drone_command_test.cpp.o
@@ -177,12 +190,36 @@ src/drone_command_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.s
 .PHONY : src/drone_command_test.cpp.s
 
+src/iperf_wrapper.o: src/iperf_wrapper.cpp.o
+.PHONY : src/iperf_wrapper.o
+
+# target to build an object file
+src/iperf_wrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o
+.PHONY : src/iperf_wrapper.cpp.o
+
+src/iperf_wrapper.i: src/iperf_wrapper.cpp.i
+.PHONY : src/iperf_wrapper.i
+
+# target to preprocess a source file
+src/iperf_wrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.i
+.PHONY : src/iperf_wrapper.cpp.i
+
+src/iperf_wrapper.s: src/iperf_wrapper.cpp.s
+.PHONY : src/iperf_wrapper.s
+
+# target to generate assembly for a file
+src/iperf_wrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.s
+.PHONY : src/iperf_wrapper.cpp.s
+
 src/serial_port.o: src/serial_port.cpp.o
 .PHONY : src/serial_port.o
 
 # target to build an object file
 src/serial_port.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/serial_port.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/serial_port.cpp.o
 .PHONY : src/serial_port.cpp.o
 
 src/serial_port.i: src/serial_port.cpp.i
@@ -190,7 +227,7 @@ src/serial_port.i: src/serial_port.cpp.i
 
 # target to preprocess a source file
 src/serial_port.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/serial_port.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/serial_port.cpp.i
 .PHONY : src/serial_port.cpp.i
 
 src/serial_port.s: src/serial_port.cpp.s
@@ -198,7 +235,7 @@ src/serial_port.s: src/serial_port.cpp.s
 
 # target to generate assembly for a file
 src/serial_port.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/serial_port.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/serial_port.cpp.s
 .PHONY : src/serial_port.cpp.s
 
 src/wireless_interface_con.o: src/wireless_interface_con.cpp.o
@@ -206,7 +243,7 @@ src/wireless_interface_con.o: src/wireless_interface_con.cpp.o
 
 # target to build an object file
 src/wireless_interface_con.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o
 .PHONY : src/wireless_interface_con.cpp.o
 
 src/wireless_interface_con.i: src/wireless_interface_con.cpp.i
@@ -214,7 +251,7 @@ src/wireless_interface_con.i: src/wireless_interface_con.cpp.i
 
 # target to preprocess a source file
 src/wireless_interface_con.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.i
 .PHONY : src/wireless_interface_con.cpp.i
 
 src/wireless_interface_con.s: src/wireless_interface_con.cpp.s
@@ -222,7 +259,7 @@ src/wireless_interface_con.s: src/wireless_interface_con.cpp.s
 
 # target to generate assembly for a file
 src/wireless_interface_con.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.s
 .PHONY : src/wireless_interface_con.cpp.s
 
 # Help Target
@@ -233,6 +270,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... Drone_command"
 	@echo "... drone_command_test"
 	@echo "... src/Drone_Command.o"
 	@echo "... src/Drone_Command.i"
@@ -240,6 +278,9 @@ help:
 	@echo "... src/drone_command_test.o"
 	@echo "... src/drone_command_test.i"
 	@echo "... src/drone_command_test.s"
+	@echo "... src/iperf_wrapper.o"
+	@echo "... src/iperf_wrapper.i"
+	@echo "... src/iperf_wrapper.s"
 	@echo "... src/serial_port.o"
 	@echo "... src/serial_port.i"
 	@echo "... src/serial_port.s"
