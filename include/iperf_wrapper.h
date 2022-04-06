@@ -18,10 +18,12 @@ private:
     pid_t pid;
     std::unique_ptr<std::thread> iperf_thread;
     std::string bw;//bandwidth
+    std::string server_ip;
+    std::string client_ip;
     // std::string server_ip;
     /* data */
 public:
-    iperf_wrapper(std::string file_name,bool server,std::string server_ip, std::string bandwidth);
+    iperf_wrapper(std::string file_name,bool server,std::string server_ip_,std::string client_ip_, std::string bandwidth);
 
 
     ~iperf_wrapper();

@@ -3,7 +3,11 @@
 
 
 
-
+#ifdef USEDEBUG
+#define Debug(COLOR,x,RESET) std::cout<<COLOR<< x<<RESET
+#else
+#define Debug(x) 
+#endif 
 
 
 

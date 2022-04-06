@@ -12,6 +12,7 @@
 		[
 			"add_executable",
 			"target_link_libraries",
+			"add_compile_definitions",
 			"include_directories"
 		],
 		"files" : 
@@ -26,13 +27,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 17,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 19,
+				"line" : 21,
 				"parent" : 0
 			},
 			{
@@ -40,24 +41,43 @@
 				"file" : 0,
 				"line" : 18,
 				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 20,
+				"parent" : 0
 			}
 		]
 	},
 	"compileGroups" : 
 	[
 		{
-			"includes" : 
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				}
+			],
+			"defines" : 
 			[
 				{
 					"backtrace" : 3,
+					"define" : "USEDEBUG"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/include"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0"
 				}
 			],
@@ -80,6 +100,10 @@
 	{
 		"commandFragments" : 
 		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
 			{
 				"fragment" : "",
 				"role" : "flags"

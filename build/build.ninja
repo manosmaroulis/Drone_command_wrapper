@@ -73,6 +73,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 build cmake_object_order_depends_target_drone_command_test: phony || cmake_object_order_depends_target_Drone_command
 
 build CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o: CXX_COMPILER__drone_command_test_Debug /home/nitlab/Desktop/drones/Drone_command_wrapper/src/drone_command_test.cpp || cmake_object_order_depends_target_drone_command_test
+  DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
@@ -106,6 +107,7 @@ build drone_command_test: CXX_EXECUTABLE_LINKER__drone_command_test_Debug CMakeF
 build cmake_object_order_depends_target_Drone_command: phony || CMakeFiles/Drone_command.dir
 
 build CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o: CXX_COMPILER__Drone_command_Debug /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Drone_Command.cpp || cmake_object_order_depends_target_Drone_command
+  DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
@@ -113,6 +115,7 @@ build CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o: CXX_COMPILER__Drone_
   OBJECT_FILE_DIR = CMakeFiles/Drone_command.dir/src
 
 build CMakeFiles/Drone_command.dir/src/serial_port.cpp.o: CXX_COMPILER__Drone_command_Debug /home/nitlab/Desktop/drones/Drone_command_wrapper/src/serial_port.cpp || cmake_object_order_depends_target_Drone_command
+  DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/Drone_command.dir/src/serial_port.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
@@ -120,6 +123,7 @@ build CMakeFiles/Drone_command.dir/src/serial_port.cpp.o: CXX_COMPILER__Drone_co
   OBJECT_FILE_DIR = CMakeFiles/Drone_command.dir/src
 
 build CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o: CXX_COMPILER__Drone_command_Debug /home/nitlab/Desktop/drones/Drone_command_wrapper/src/wireless_interface_con.cpp || cmake_object_order_depends_target_Drone_command
+  DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
@@ -127,6 +131,7 @@ build CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o: CXX_COMPILE
   OBJECT_FILE_DIR = CMakeFiles/Drone_command.dir/src
 
 build CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o: CXX_COMPILER__Drone_command_Debug /home/nitlab/Desktop/drones/Drone_command_wrapper/src/iperf_wrapper.cpp || cmake_object_order_depends_target_Drone_command
+  DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0

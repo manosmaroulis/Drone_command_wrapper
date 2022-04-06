@@ -30,17 +30,19 @@ int main(int argc, char**argv)
 	bool is_server;
 	std::string iperf_file;
 	std::string server_ip;
+	std::string client_ip;
 	std::string bw;
 	
 	if(argc<3){
-		std::cout<<RED<<"TOO FEW ARGUMENTS\n"<<RESET;
+		std::cout<<RED<<"ARGUMENTS: -iperf_file -is_server -server_ip -client_ip -bw\n"<<RESET;
 		return -1;
 	}else{
 
 		iperf_file = std::string(argv[1]);
 		is_server= std::string(argv[2])=="1"?true:false;
 		server_ip=std::string(argv[3]);
-		bw =std::string(argv[4]);
+		client_ip = std::string(argv[4]);
+		bw =std::string(argv[5]);
 	}
 	
 	char c;
@@ -53,9 +55,10 @@ int main(int argc, char**argv)
 	// std::string iperf_file_name = std::string(argv[1]);
 
 
-	iperf_wrapper wrpr(iperf_file,is_server,server_ip,bw);
+	iperf_wrapper wrpr(iperf_file,is_server,server_ip,client_ip,bw);
 	
 	dc_A.enable_msg_interval(MAVLINK_MSG_ID_HEARTBEAT);
+	dc_A.enable_msg_interval(MAVLINK_MSG_ID_GLOBAL_POSITION_INT);
 	
 	// MAVLINK_MSG_ID_EXTENDED_SYS_STATE
 	printf("Waiting for heartbit\n");
@@ -106,7 +109,6 @@ int main(int argc, char**argv)
 
 	//////////////////////////IPERF COMMAND
 	wrpr.iperf_start();
-	dc_A.enable_msg_interval(MAVLINK_MSG_ID_GLOBAL_POSITION_INT);
 
 
 	std::cout<<GREEN<<"STARTING MISSION\n"<<RESET;
@@ -126,7 +128,7 @@ int main(int argc, char**argv)
 	// }
 
 	
-	std::this_thread::sleep_for(std::chrono::seconds(10));
+	std::this_thread::sleep_for(std::chrono::seconds(15));
 
 	drone_landed_state = dc_A.get_landed_state();
 	

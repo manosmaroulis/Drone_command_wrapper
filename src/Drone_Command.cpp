@@ -5,7 +5,7 @@ using namespace std;
 Drone_Command::Drone_Command():serial_port((char*)UARTNAME, BAUDRATE),companion_id(0),system_id(-1),component_id(-1),landed_state(0)
 {
 	//initialisation of the serial communication:
-	cout<<GREEN<<"Serial - interface start\n"<<RESET;
+	Debug(GREEN,"Serial - interface start\n",RESET);
 	try
 	{
 
@@ -20,7 +20,7 @@ Drone_Command::Drone_Command():serial_port((char*)UARTNAME, BAUDRATE),companion_
 	}
 	
 	
-	cout<<GREEN<<"Drone_Command serial connection established\n"<<RESET;
+	Debug(GREEN,"Drone_Command serial connection established\n",RESET);
 	is_not_end = true;
 
 	gps_file.open("gps_log.txt");
@@ -29,6 +29,7 @@ Drone_Command::Drone_Command():serial_port((char*)UARTNAME, BAUDRATE),companion_
 
 
 Drone_Command::~Drone_Command(){
+	gps_file<<"END\n";
 	gps_file.flush();
 	gps_file.close();
 	serial_port.stop();
@@ -55,10 +56,10 @@ void Drone_Command::get_heartbit(){
 		recv_data();
 	}
 
-	cout<<"System id is "<<system_id<<"\n";
-	cout<<"Component id is "<<component_id<<"\n";
-	cout<<"Companion computer id is "<<companion_id<<"\n";
-	cout<<GREEN<<" System is ready \n"<<RESET;
+	Debug(WHITE,"System id is "<<system_id,RESET);
+	Debug(WHITE,"Component id is "<<component_id,RESET);
+	Debug(WHITE,"Companion computer id is "<<companion_id,RESET);
+	Debug(GREEN," System is ready \n",RESET);
 
 	return;
 }
@@ -113,7 +114,7 @@ int Drone_Command::send_command(uint8_t target_system,uint8_t target_component,u
 	
 	int len = serial_port.write_message(msg);
 	if(len == 0){
-		std::cout<<RED<<"COULD NOT WRITE COMMAND "<<command<<".Trying again..\n"<<RESET;
+		Debug(RED,"COULD NOT WRITE COMMAND "<<command<<".Trying again..\n",RESET);
 	}
 	len = serial_port.write_message(msg);
 
@@ -184,23 +185,23 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 			mavlink_heartbeat_t hb;
 
 			if(system_id<0){
-				cout<<GREEN<<"Initializing system ID\n"<<RESET;
+				Debug(GREEN,"Initializing system ID\n",RESET);
 				std::lock_guard<std::mutex> lock(mtx);
 				system_id = msg->sysid;
 				component_id = msg->compid;
 			}
 			
 
-			cout<<GREEN<<"MAVLINK_MSG_ID_HEARTBEAT\n"<<RESET;
+			Debug(GREEN,"MAVLINK_MSG_ID_HEARTBEAT\n",RESET);
 
 			mavlink_msg_heartbeat_decode(msg, &hb);
 			
-			cout<<"SystemID: "<<msg->sysid<<"\n";
-			cout<<"Component ID:"<< msg->compid<<"\n";
-			cout<<"system status:"<< hb.system_status<<"\n";
-			cout<<"custom mode:"<< hb.custom_mode<<"\n";
-			cout<<"autopilot:"<< hb.autopilot<<"\n";
-			cout<<"type:"<< hb.type<<"\n";
+			Debug(WHITE,"SystemID: "<<msg->sysid<<"\n",RESET);
+			Debug(WHITE,"Component ID:"<< msg->compid<<"\n",RESET);
+			Debug(WHITE,"system status:"<< hb.system_status<<"\n",RESET);
+			Debug(WHITE,"custom mode:"<< hb.custom_mode<<"\n",RESET);
+			Debug(WHITE,"autopilot:"<< hb.autopilot<<"\n",RESET);
+			Debug(WHITE,"type:"<< hb.type<<"\n",RESET);
 			
 			// Check the arm status:
 			// int armed_state = hb.base_mode & MAV_MODE_FLAG_SAFETY_ARMED;
@@ -220,10 +221,10 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 	
 				if(ack.result == 0){
 					arm(1);
-					cout<<GREEN<<"Vehicle is armed\n"<<RESET;
+					Debug(GREEN,"Vehicle is armed\n",RESET);
 				}else if(ack.result == 4){
 					arm(0);
-					cout<<RED<<"Vehicle is NOT armed\n"<<RESET;
+					Debug(RED,"Vehicle is NOT armed\n",RESET);
 					// printf("Vehicle is NOT armed\n");
 				}
 
@@ -233,27 +234,27 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 
 
 				if(ack.result==0){
-					cout<<GREEN<<"MODE CHANGED\n"<<RESET;
+					Debug(GREEN,"MODE CHANGED\n",RESET);
 					// printf("MODE CHANGED\n");
 				}else if( ack.result == 4){
-					cout<<RED<<"MODE CHANGE command executed but failed\n"<<RESET;
+					Debug(RED,"MODE CHANGE command executed but failed\n",RESET);
 					// printf("MODE CHANGE command executed but failed\n");
 				}
 			}
 
-			cout<<"command "<< ack.command<<"\n";
-			cout<<"progess "<< ack.progress<<"\n";
-			cout<<"result "<< ack.result<<"\n";
-			cout<<"result param2 "<< ack.result_param2<<"\n";
-			cout<<"target component "<< ack.target_component<<"\n";
-			cout<<"target system "<< ack.target_system<<"\n";
+			Debug(WHITE,"command "<< ack.command<<"\n",RESET);
+			Debug(WHITE,"progess "<< ack.progress<<"\n",RESET);
+			Debug(WHITE,"result "<< ack.result<<"\n",RESET);
+			Debug(WHITE,"result param2 "<< ack.result_param2<<"\n",RESET);
+			Debug(WHITE,"target component "<< ack.target_component<<"\n",RESET);
+			Debug(WHITE,"target system "<< ack.target_system<<"\n",RESET);
 
 			res = message_result(1,ack.command,ack.result);
 			return(res);
 		}
 		case MAVLINK_MSG_ID_SYS_STATUS:
 		{
-			cout<<"MAVLINK SYSTEM STATUS\n";
+			Debug(WHITE,"MAVLINK SYSTEM STATUS\n",RESET);
 			// mavlink_msg_sys
 			mavlink_sys_status_t st;
 
@@ -267,11 +268,11 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 		{
 			mavlink_global_position_int_t global_pos;
 			mavlink_msg_global_position_int_decode(msg,&global_pos);
-			cout<<GREEN<<"GPS READING\n"<<RESET;
-			// cout<<"TIME SINCE BOOT: "<<global_pos.time_boot_ms<<"\n";
-			// cout<<"ALT: "<<global_pos.alt<<"\n";
-			// cout<<"LONG: "<<global_pos.lon<<"\n";
-			// cout<<"LAT: "<< global_pos.lat<<"\n";
+			Debug(GREEN,"GPS READING\n",RESET);
+			// Debug(<<"TIME SINCE BOOT: "<<global_pos.time_boot_ms<<"\n";
+			// Debug(<<"ALT: "<<global_pos.alt<<"\n";
+			// Debug(<<"LONG: "<<global_pos.lon<<"\n";
+			// Debug(<<"LAT: "<< global_pos.lat<<"\n";
 			gps_file <<global_pos.lat<<" "<< global_pos.lon<<" "<<global_pos.alt<<" "<<global_pos.time_boot_ms<<"\n";
 			gps_file.flush();
 			res = message_result(0,-1,-1);
@@ -281,7 +282,7 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 		{
 			mavlink_extended_sys_state_t sys_state;
 			mavlink_msg_extended_sys_state_decode(msg,&sys_state);
-			cout<<GREEN<<"EXTENDED STATE\n"<<RESET;
+			Debug(GREEN,"EXTENDED STATE\n",RESET);
 
 			if(sys_state.landed_state!=landed_state){
 				landed_state.store(sys_state.landed_state,std::memory_order_relaxed);	
@@ -289,19 +290,19 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 
 			if(sys_state.landed_state==MAV_LANDED_STATE_IN_AIR){
 
-				cout<<GREEN<<"system is on air\n"<<RESET;
+				Debug(GREEN,"system is on air\n",RESET);
 
 			}else if(sys_state.landed_state==MAV_LANDED_STATE_ON_GROUND){
 				
-				cout<<GREEN<<"system is on ground\n"<<RESET;
+				Debug(GREEN,"system is on ground\n",RESET);
 
 			}else if(sys_state.landed_state==MAV_LANDED_STATE_LANDING){
 				
-				cout<<GREEN<<"system is landing\n"<<RESET;
+				Debug(GREEN,"system is landing\n",RESET);
 
 			}else if(sys_state.landed_state==MAV_LANDED_STATE_TAKEOFF){
 
-				cout<<GREEN<<"system is taking off\n"<<RESET;
+				Debug(GREEN,"system is taking off\n",RESET);
 
 			}
 
