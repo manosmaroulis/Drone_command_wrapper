@@ -6,7 +6,7 @@
 #ifdef USEDEBUG
 #define Debug(COLOR,x,RESET) std::cout<<COLOR<< x<<RESET
 #else
-#define Debug(x) 
+#define Debug(COLOR,x,RESET) 
 #endif 
 
 
@@ -54,6 +54,7 @@
 // BAUDRATE and port hard setup:
 #define BAUDRATE 57600
 #define UARTNAME "/dev/ttyACM1"
+#define UARTNAME_2 "/dev/ttyACM0"
 
 
 

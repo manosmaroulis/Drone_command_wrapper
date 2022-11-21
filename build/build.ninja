@@ -64,6 +64,40 @@ build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
 build edit_cache: phony CMakeFiles/edit_cache.util
 
 # =============================================================================
+# Object build statements for EXECUTABLE target intercomm_test
+
+
+#############################################
+# Order-only phony target for intercomm_test
+
+build cmake_object_order_depends_target_intercomm_test: phony || cmake_object_order_depends_target_Drone_command
+
+build CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.o: CXX_COMPILER__intercomm_test_Debug /home/nitlab/Desktop/drones/Drone_command_wrapper/src/intercomm_test.cpp || cmake_object_order_depends_target_intercomm_test
+  DEFINES = -DUSEDEBUG
+  DEP_FILE = CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test
+  OBJECT_DIR = CMakeFiles/intercomm_test.dir
+  OBJECT_FILE_DIR = CMakeFiles/intercomm_test.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target intercomm_test
+
+
+#############################################
+# Link the executable intercomm_test
+
+build intercomm_test: CXX_EXECUTABLE_LINKER__intercomm_test_Debug CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.o | libDrone_command.a || libDrone_command.a
+  FLAGS = -g
+  LINK_LIBRARIES = libDrone_command.a  -lpthread
+  OBJECT_DIR = CMakeFiles/intercomm_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = intercomm_test
+  TARGET_PDB = intercomm_test.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target drone_command_test
 
 
@@ -76,7 +110,7 @@ build CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o: CXX_COMPIL
   DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o.d
   FLAGS = -g
-  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
+  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test
   OBJECT_DIR = CMakeFiles/drone_command_test.dir
   OBJECT_FILE_DIR = CMakeFiles/drone_command_test.dir/src
 
@@ -110,7 +144,15 @@ build CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o: CXX_COMPILER__Drone_
   DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o.d
   FLAGS = -g
-  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
+  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test
+  OBJECT_DIR = CMakeFiles/Drone_command.dir
+  OBJECT_FILE_DIR = CMakeFiles/Drone_command.dir/src
+
+build CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: CXX_COMPILER__Drone_command_Debug /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Intercommunication.cpp || cmake_object_order_depends_target_Drone_command
+  DEFINES = -DUSEDEBUG
+  DEP_FILE = CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test
   OBJECT_DIR = CMakeFiles/Drone_command.dir
   OBJECT_FILE_DIR = CMakeFiles/Drone_command.dir/src
 
@@ -118,7 +160,7 @@ build CMakeFiles/Drone_command.dir/src/serial_port.cpp.o: CXX_COMPILER__Drone_co
   DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/Drone_command.dir/src/serial_port.cpp.o.d
   FLAGS = -g
-  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
+  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test
   OBJECT_DIR = CMakeFiles/Drone_command.dir
   OBJECT_FILE_DIR = CMakeFiles/Drone_command.dir/src
 
@@ -126,7 +168,7 @@ build CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o: CXX_COMPILE
   DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o.d
   FLAGS = -g
-  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
+  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test
   OBJECT_DIR = CMakeFiles/Drone_command.dir
   OBJECT_FILE_DIR = CMakeFiles/Drone_command.dir/src
 
@@ -134,7 +176,7 @@ build CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o: CXX_COMPILER__Drone_
   DEFINES = -DUSEDEBUG
   DEP_FILE = CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o.d
   FLAGS = -g
-  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0
+  INCLUDES = -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test
   OBJECT_DIR = CMakeFiles/Drone_command.dir
   OBJECT_FILE_DIR = CMakeFiles/Drone_command.dir/src
 
@@ -146,7 +188,7 @@ build CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o: CXX_COMPILER__Drone_
 #############################################
 # Link the static library libDrone_command.a
 
-build libDrone_command.a: CXX_STATIC_LIBRARY_LINKER__Drone_command_Debug CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o CMakeFiles/Drone_command.dir/src/serial_port.cpp.o CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o
+build libDrone_command.a: CXX_STATIC_LIBRARY_LINKER__Drone_command_Debug CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o CMakeFiles/Drone_command.dir/src/serial_port.cpp.o CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/Drone_command.dir
   POST_BUILD = :
@@ -167,7 +209,7 @@ build Drone_command: phony libDrone_command.a
 #############################################
 # Folder: /home/nitlab/Desktop/drones/Drone_command_wrapper/build
 
-build all: phony drone_command_test libDrone_command.a
+build all: phony intercomm_test drone_command_test libDrone_command.a
 
 # =============================================================================
 # Built-in targets

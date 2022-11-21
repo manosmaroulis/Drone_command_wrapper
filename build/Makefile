@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named intercomm_test
+
+# Build rule for target.
+intercomm_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 intercomm_test
+.PHONY : intercomm_test
+
+# fast build rule for target.
+intercomm_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test.dir/build.make CMakeFiles/intercomm_test.dir/build
+.PHONY : intercomm_test/fast
+
+#=============================================================================
 # Target rules for targets named drone_command_test
 
 # Build rule for target.
@@ -166,6 +179,30 @@ src/Drone_Command.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.s
 .PHONY : src/Drone_Command.cpp.s
 
+src/Intercommunication.o: src/Intercommunication.cpp.o
+.PHONY : src/Intercommunication.o
+
+# target to build an object file
+src/Intercommunication.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o
+.PHONY : src/Intercommunication.cpp.o
+
+src/Intercommunication.i: src/Intercommunication.cpp.i
+.PHONY : src/Intercommunication.i
+
+# target to preprocess a source file
+src/Intercommunication.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.i
+.PHONY : src/Intercommunication.cpp.i
+
+src/Intercommunication.s: src/Intercommunication.cpp.s
+.PHONY : src/Intercommunication.s
+
+# target to generate assembly for a file
+src/Intercommunication.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drone_command.dir/build.make CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.s
+.PHONY : src/Intercommunication.cpp.s
+
 src/drone_command_test.o: src/drone_command_test.cpp.o
 .PHONY : src/drone_command_test.o
 
@@ -189,6 +226,30 @@ src/drone_command_test.s: src/drone_command_test.cpp.s
 src/drone_command_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.s
 .PHONY : src/drone_command_test.cpp.s
+
+src/intercomm_test.o: src/intercomm_test.cpp.o
+.PHONY : src/intercomm_test.o
+
+# target to build an object file
+src/intercomm_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test.dir/build.make CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.o
+.PHONY : src/intercomm_test.cpp.o
+
+src/intercomm_test.i: src/intercomm_test.cpp.i
+.PHONY : src/intercomm_test.i
+
+# target to preprocess a source file
+src/intercomm_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test.dir/build.make CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.i
+.PHONY : src/intercomm_test.cpp.i
+
+src/intercomm_test.s: src/intercomm_test.cpp.s
+.PHONY : src/intercomm_test.s
+
+# target to generate assembly for a file
+src/intercomm_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test.dir/build.make CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.s
+.PHONY : src/intercomm_test.cpp.s
 
 src/iperf_wrapper.o: src/iperf_wrapper.cpp.o
 .PHONY : src/iperf_wrapper.o
@@ -272,12 +333,19 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Drone_command"
 	@echo "... drone_command_test"
+	@echo "... intercomm_test"
 	@echo "... src/Drone_Command.o"
 	@echo "... src/Drone_Command.i"
 	@echo "... src/Drone_Command.s"
+	@echo "... src/Intercommunication.o"
+	@echo "... src/Intercommunication.i"
+	@echo "... src/Intercommunication.s"
 	@echo "... src/drone_command_test.o"
 	@echo "... src/drone_command_test.i"
 	@echo "... src/drone_command_test.s"
+	@echo "... src/intercomm_test.o"
+	@echo "... src/intercomm_test.i"
+	@echo "... src/intercomm_test.s"
 	@echo "... src/iperf_wrapper.o"
 	@echo "... src/iperf_wrapper.i"
 	@echo "... src/iperf_wrapper.s"

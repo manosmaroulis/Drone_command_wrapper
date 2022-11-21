@@ -14,9 +14,18 @@ Drone_Command::Drone_Command():serial_port((char*)UARTNAME, BAUDRATE),companion_
 	}
 	catch(const int e)
 	{
-		cerr<<RED<<"MAKE SURE THE SERIAL PORT IS CONNECTED, TERMINATING \n"<<RESET;
+		cerr<<RED<<"MAKE SURE THE SERIAL PORT IS CONNECTED, TRYING NEXT PORT \n"<<RESET;
 		// std::cerr << e.what() << '\n';
-		exit(EXIT_FAILURE);
+		// exit(EXIT_FAILURE);
+		serial_port.uart_name = (char*)UARTNAME_2;
+		try{
+
+			serial_port.start();
+		}
+		catch(const int k){
+			cerr<<RED<<"MAKE SURE THE SERIAL PORT IS CONNECTED,TERMINATING \n"<<RESET;
+			exit(EXIT_FAILURE);
+		}
 	}
 	
 	
@@ -56,9 +65,9 @@ void Drone_Command::get_heartbit(){
 		recv_data();
 	}
 
-	Debug(WHITE,"System id is "<<system_id,RESET);
-	Debug(WHITE,"Component id is "<<component_id,RESET);
-	Debug(WHITE,"Companion computer id is "<<companion_id,RESET);
+	Debug(WHITE,"System id is "<<(system_id),RESET);
+	Debug(WHITE,"Component id is "<<(component_id),RESET);
+	Debug(WHITE,"Companion computer id is "<<(companion_id),RESET);
 	Debug(GREEN," System is ready \n",RESET);
 
 	return;
@@ -114,7 +123,7 @@ int Drone_Command::send_command(uint8_t target_system,uint8_t target_component,u
 	
 	int len = serial_port.write_message(msg);
 	if(len == 0){
-		Debug(RED,"COULD NOT WRITE COMMAND "<<command<<".Trying again..\n",RESET);
+		Debug(RED,"COULD NOT WRITE COMMAND "<<(command)+".Trying again..\n",RESET);
 	}
 	len = serial_port.write_message(msg);
 

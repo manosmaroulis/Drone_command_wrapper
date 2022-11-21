@@ -1,2 +1,2 @@
-/usr/bin/ar qc libDrone_command.a CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o CMakeFiles/Drone_command.dir/src/serial_port.cpp.o CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o
+/usr/bin/ar qc libDrone_command.a CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o CMakeFiles/Drone_command.dir/src/serial_port.cpp.o CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o
 /usr/bin/ranlib libDrone_command.a

@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o"
   "CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o.d"
+  "CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o"
+  "CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o.d"
   "CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o"
   "CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o.d"
   "CMakeFiles/Drone_command.dir/src/serial_port.cpp.o"

@@ -18,7 +18,7 @@ iperf_file_name(file_name),bw(bandwidth),server_ip(server_ip_),client_ip(client_
 {
 
     if(server){
-        command = "iperf -s -u -i 1 > "+file_name;
+        command = "iperf -s -u -i 1 -t 90> "+file_name;
     }else{
 
         command = "iperf -c "+server_ip_+" -u  -b "+bandwidth+"M -t 10000 -i 1 >"+file_name;
@@ -28,6 +28,15 @@ iperf_file_name(file_name),bw(bandwidth),server_ip(server_ip_),client_ip(client_
 
 
 iperf_wrapper::~iperf_wrapper(){}
+
+
+std::shared_ptr<std::thread> iperf_wrapper::get_iperf_thread(){
+
+
+
+    return iperf_thread;
+}
+
 
 void iperf_wrapper::iperf_start(){
 
@@ -51,7 +60,7 @@ void iperf_wrapper::iperf_start(){
 
     // int ret = system("ping -c1 -s1 8.8.8.3  > /dev/null 2>&1");
     
-    iperf_thread = std::unique_ptr<std::thread>(new std::thread([&](){
+    iperf_thread = std::shared_ptr<std::thread>(new std::thread([&](){
         //starts a new process.
         system(this->command.c_str());
         std::cout<<"IPERF STOPPED\n";

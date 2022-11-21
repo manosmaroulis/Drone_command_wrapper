@@ -16,7 +16,7 @@ private:
     bool is_server;
     std::string command;
     pid_t pid;
-    std::unique_ptr<std::thread> iperf_thread;
+    std::shared_ptr<std::thread> iperf_thread;
     std::string bw;//bandwidth
     std::string server_ip;
     std::string client_ip;
@@ -31,6 +31,7 @@ public:
     // iperf start is blocking until there is a connection
    void iperf_start();
     void iperf_stop();
+    std::shared_ptr<std::thread> get_iperf_thread();
 };
 
 

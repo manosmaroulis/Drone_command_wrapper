@@ -499,8 +499,16 @@ CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o: ../src/drone_com
   /usr/include/x86_64-linux-gnu/bits/statx-generic.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h \
-  /usr/include/assert.h
+  /usr/include/assert.h \
+  ../include/Intercommunication.h \
+  /usr/include/c++/9/stdlib.h \
+  /usr/include/x86_64-linux-gnu/sys/time.h \
+  /usr/include/arpa/inet.h
 
+
+/usr/include/arpa/inet.h:
+
+/usr/include/c++/9/stdlib.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h:
 
@@ -1050,6 +1058,8 @@ CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o: ../src/drone_com
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
+/usr/include/x86_64-linux-gnu/sys/time.h:
+
 /usr/include/c++/9/ext/aligned_buffer.h:
 
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_vision_speed_estimate.h:
@@ -1189,6 +1199,8 @@ CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o: ../src/drone_com
 /usr/include/x86_64-linux-gnu/bits/confname.h:
 
 ../mavlink/include/mavlink/v2.0/common/mavlink_msg_global_position_int.h:
+
+../include/Intercommunication.h:
 
 /usr/include/c++/9/bits/atomic_base.h:
 

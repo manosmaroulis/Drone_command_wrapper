@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.18"
@@ -16,11 +16,12 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "",
 			"projects" : 
 			[
 				{
@@ -32,7 +33,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -41,15 +43,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Drone_command::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Drone_command-Debug-c186ac9843fcac9bdea1.json",
+					"jsonFile" : "target-Drone_command-3e5f0cb6df6411e93627.json",
 					"name" : "Drone_command",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "drone_command_test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-drone_command_test-Debug-371d643f6f6cef83aca2.json",
+					"jsonFile" : "target-drone_command_test-da0907473d7c09eac43a.json",
 					"name" : "drone_command_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "intercomm_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-intercomm_test-fff98849d05fb1a43704.json",
+					"name" : "intercomm_test",
 					"projectIndex" : 0
 				}
 			]

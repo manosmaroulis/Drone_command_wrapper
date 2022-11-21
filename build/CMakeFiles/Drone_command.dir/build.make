@@ -83,10 +83,24 @@ CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Drone_Command.cpp -o CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.s
 
+CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: CMakeFiles/Drone_command.dir/flags.make
+CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: ../src/Intercommunication.cpp
+CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: CMakeFiles/Drone_command.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o -MF CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o.d -o CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Intercommunication.cpp
+
+CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Intercommunication.cpp > CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.i
+
+CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Intercommunication.cpp -o CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.s
+
 CMakeFiles/Drone_command.dir/src/serial_port.cpp.o: CMakeFiles/Drone_command.dir/flags.make
 CMakeFiles/Drone_command.dir/src/serial_port.cpp.o: ../src/serial_port.cpp
 CMakeFiles/Drone_command.dir/src/serial_port.cpp.o: CMakeFiles/Drone_command.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Drone_command.dir/src/serial_port.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Drone_command.dir/src/serial_port.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drone_command.dir/src/serial_port.cpp.o -MF CMakeFiles/Drone_command.dir/src/serial_port.cpp.o.d -o CMakeFiles/Drone_command.dir/src/serial_port.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/serial_port.cpp
 
 CMakeFiles/Drone_command.dir/src/serial_port.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/Drone_command.dir/src/serial_port.cpp.s: cmake_force
 CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o: CMakeFiles/Drone_command.dir/flags.make
 CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o: ../src/wireless_interface_con.cpp
 CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o: CMakeFiles/Drone_command.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o -MF CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o.d -o CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/wireless_interface_con.cpp
 
 CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.s: cmake_force
 CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o: CMakeFiles/Drone_command.dir/flags.make
 CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o: ../src/iperf_wrapper.cpp
 CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o: CMakeFiles/Drone_command.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o -MF CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o.d -o CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/iperf_wrapper.cpp
 
 CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.i: cmake_force
@@ -128,6 +142,7 @@ CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.s: cmake_force
 # Object files for target Drone_command
 Drone_command_OBJECTS = \
 "CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o" \
+"CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o" \
 "CMakeFiles/Drone_command.dir/src/serial_port.cpp.o" \
 "CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o" \
 "CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o"
@@ -136,12 +151,13 @@ Drone_command_OBJECTS = \
 Drone_command_EXTERNAL_OBJECTS =
 
 libDrone_command.a: CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o
+libDrone_command.a: CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o
 libDrone_command.a: CMakeFiles/Drone_command.dir/src/serial_port.cpp.o
 libDrone_command.a: CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o
 libDrone_command.a: CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o
 libDrone_command.a: CMakeFiles/Drone_command.dir/build.make
 libDrone_command.a: CMakeFiles/Drone_command.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libDrone_command.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nitlab/Desktop/drones/Drone_command_wrapper/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libDrone_command.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Drone_command.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Drone_command.dir/link.txt --verbose=$(VERBOSE)
 

@@ -501,4 +501,8 @@ CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o
  /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h
  /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h
  /usr/include/assert.h
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/include/Intercommunication.h
+ /usr/include/c++/9/stdlib.h
+ /usr/include/x86_64-linux-gnu/sys/time.h
+ /usr/include/arpa/inet.h
 

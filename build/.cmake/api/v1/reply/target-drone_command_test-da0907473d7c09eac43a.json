@@ -1,9 +1,8 @@
 {
-	"archive" : {},
 	"artifacts" : 
 	[
 		{
-			"path" : "libDrone_command.a"
+			"path" : "drone_command_test"
 		}
 	],
 	"backtrace" : 1,
@@ -11,7 +10,8 @@
 	{
 		"commands" : 
 		[
-			"add_library",
+			"add_executable",
+			"target_link_libraries",
 			"add_compile_definitions",
 			"include_directories"
 		],
@@ -27,19 +27,31 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 16,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 18,
+				"line" : 21,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
 				"line" : 20,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 24,
 				"parent" : 0
 			}
 		]
@@ -47,47 +59,69 @@
 	"compileGroups" : 
 	[
 		{
-			"compileCommandFragments" : 
-			[
-				{
-					"fragment" : "-g"
-				}
-			],
 			"defines" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"define" : "USEDEBUG"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/include"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test"
 				}
 			],
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				0,
-				1,
-				2,
-				3
+				0
 			]
 		}
 	],
-	"id" : "Drone_command::@6890427a1f51a3e7e1df",
-	"name" : "Drone_command",
-	"nameOnDisk" : "libDrone_command.a",
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "Drone_command::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "drone_command_test::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libDrone_command.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lpthread",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "drone_command_test",
+	"nameOnDisk" : "drone_command_test",
 	"paths" : 
 	{
 		"build" : ".",
@@ -99,10 +133,7 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0,
-				1,
-				2,
-				3
+				0
 			]
 		}
 	],
@@ -111,27 +142,9 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/Drone_Command.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/serial_port.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/wireless_interface_con.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/iperf_wrapper.cpp",
+			"path" : "src/drone_command_test.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
-	"type" : "STATIC_LIBRARY"
+	"type" : "EXECUTABLE"
 }

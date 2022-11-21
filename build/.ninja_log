@@ -1,12 +1,9 @@
 # ninja log v5
-1	996	1649261171562904436	CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o	fe89acf51f74c35e
-1	1096	1649260493451125901	CMakeFiles/Drone_command.dir/src/serial_port.cpp.o	b1112209a685c8aa
-1	907	1649260493263127208	CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o	34a80cba13e8ef35
-997	1018	1649261171582904321	libDrone_command.a	6c43079a6b38a7a5
-17	1140	1648465777901253686	CMakeFiles/drone_command_test.dir/src/serial_port.cpp.o	7456b265ae835fb8
-1141	1235	1649261171798903077	drone_command_test	9760e59f9b04b346
-31	1349	1648465778109253621	CMakeFiles/drone_command_test.dir/src/wireless_interface_con.cpp.o	a18aa33d5e258bd7
-0	1633	1648465778393253532	CMakeFiles/drone_command_test.dir/src/Drone_Command.cpp.o	66739cf6f6004836
-1	1140	1649261171706903607	CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o	6ba8d7b98d436c7c
-2	1131	1649260493487125651	CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o	c0336d1e9893e23d
-2	1055	1648474160872668156	CMakeFiles/drone_command_test.dir/src/iperf_wrapper.cpp.o	c56a2155c51514
+1	1670	1668778440926193927	CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o	a702fe4cf51a8ca8
+1	1165	1668778440422196027	CMakeFiles/Drone_command.dir/src/serial_port.cpp.o	76f8b533544737b5
+1	801	1668778440058197542	CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o	4d36f9c7b2776b6e
+2	1113	1668778440370196243	CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o	c00f162c94540be2
+1671	1731	1668778440986193677	libDrone_command.a	be73842c632fb555
+2282	2394	1668778441650190913	drone_command_test	2a83cd222a297abb
+1	2281	1668778441538191379	CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o	da3a64513e7366de
+2	1572	1668778440830194327	CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o	8e181dacac45c4d5

@@ -6,7 +6,7 @@ set (INCLUDE_DIR include/)
 set(MAVLINK_DIR mavlink/include/mavlink/v2.0/ )
 set(Drone_command_SOURCES
 src/Drone_Command.cpp
-
+src/Intercommunication.cpp
 src/serial_port.cpp
 src/wireless_interface_con.cpp
 src/iperf_wrapper.cpp
@@ -19,3 +19,7 @@ add_compile_definitions(USEDEBUG)
 add_executable(drone_command_test src/drone_command_test.cpp)
 include_directories(drone_command_test ${INCLUDE_DIR} ${MAVLINK_DIR})
 target_link_libraries( drone_command_test ${PROJECT_NAME})
+
+add_executable(intercomm_test src/intercomm_test.cpp)
+include_directories(intercomm_test ${INCLUDE_DIR} ${MAVLINK_DIR})
+target_link_libraries( intercomm_test ${PROJECT_NAME})

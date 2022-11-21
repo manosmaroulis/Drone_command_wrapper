@@ -1,27 +1,37 @@
 [
 {
   "directory": "/home/nitlab/Desktop/drones/Drone_command_wrapper/build",
-  "command": "/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -g -o CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/drone_command_test.cpp",
+  "command": "/usr/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test -g -o CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/intercomm_test.cpp",
+  "file": "/home/nitlab/Desktop/drones/Drone_command_wrapper/src/intercomm_test.cpp"
+},
+{
+  "directory": "/home/nitlab/Desktop/drones/Drone_command_wrapper/build",
+  "command": "/usr/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test -g -o CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/drone_command_test.cpp",
   "file": "/home/nitlab/Desktop/drones/Drone_command_wrapper/src/drone_command_test.cpp"
 },
 {
   "directory": "/home/nitlab/Desktop/drones/Drone_command_wrapper/build",
-  "command": "/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -g -o CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Drone_Command.cpp",
+  "command": "/usr/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test -g -o CMakeFiles/Drone_command.dir/src/Drone_Command.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Drone_Command.cpp",
   "file": "/home/nitlab/Desktop/drones/Drone_command_wrapper/src/Drone_Command.cpp"
 },
 {
   "directory": "/home/nitlab/Desktop/drones/Drone_command_wrapper/build",
-  "command": "/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -g -o CMakeFiles/Drone_command.dir/src/serial_port.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/serial_port.cpp",
+  "command": "/usr/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test -g -o CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/Intercommunication.cpp",
+  "file": "/home/nitlab/Desktop/drones/Drone_command_wrapper/src/Intercommunication.cpp"
+},
+{
+  "directory": "/home/nitlab/Desktop/drones/Drone_command_wrapper/build",
+  "command": "/usr/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test -g -o CMakeFiles/Drone_command.dir/src/serial_port.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/serial_port.cpp",
   "file": "/home/nitlab/Desktop/drones/Drone_command_wrapper/src/serial_port.cpp"
 },
 {
   "directory": "/home/nitlab/Desktop/drones/Drone_command_wrapper/build",
-  "command": "/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -g -o CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/wireless_interface_con.cpp",
+  "command": "/usr/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test -g -o CMakeFiles/Drone_command.dir/src/wireless_interface_con.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/wireless_interface_con.cpp",
   "file": "/home/nitlab/Desktop/drones/Drone_command_wrapper/src/wireless_interface_con.cpp"
 },
 {
   "directory": "/home/nitlab/Desktop/drones/Drone_command_wrapper/build",
-  "command": "/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -g -o CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/iperf_wrapper.cpp",
+  "command": "/usr/bin/c++ -DUSEDEBUG -I/home/nitlab/Desktop/drones/Drone_command_wrapper/drone_command_test -I/home/nitlab/Desktop/drones/Drone_command_wrapper/include -I/home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0 -I/home/nitlab/Desktop/drones/Drone_command_wrapper/intercomm_test -g -o CMakeFiles/Drone_command.dir/src/iperf_wrapper.cpp.o -c /home/nitlab/Desktop/drones/Drone_command_wrapper/src/iperf_wrapper.cpp",
   "file": "/home/nitlab/Desktop/drones/Drone_command_wrapper/src/iperf_wrapper.cpp"
 }
 ]

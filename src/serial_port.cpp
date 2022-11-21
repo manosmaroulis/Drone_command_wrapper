@@ -84,7 +84,7 @@ initialize_defaults()
 	fd     = -1;
 	status = SERIAL_PORT_CLOSED;
 
-	uart_name = (char*)"/dev/ttyACM5";
+	uart_name = (char*)"/dev/ttyACM0";
 	baudrate  = 57600;
 
 	// Start mutex
