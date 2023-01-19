@@ -4,6 +4,8 @@ using namespace std;
 
 Drone_Command::Drone_Command():serial_port((char*)UARTNAME, BAUDRATE),companion_id(0),system_id(-1),component_id(-1),landed_state(0)
 {
+
+	icm_initialised= false;
 	//initialisation of the serial communication:
 	Debug(GREEN,"Serial - interface start\n",RESET);
 	try
@@ -42,6 +44,16 @@ Drone_Command::~Drone_Command(){
 	gps_file.flush();
 	gps_file.close();
 	serial_port.stop();
+	icm.reset();
+	
+}
+
+void Drone_Command::initialise_intercomm(char* myIP, char*peerIP,int myPort, int peerPort,bool rx_only){
+	// PUT A GUARD HERE
+	icm = std::unique_ptr<Intercommunication>(new Intercommunication(myIP,peerIP,myPort,peerPort));
+	icm_initialised = true;
+	icm_rx_only = rx_only;
+
 }
 
 bool Drone_Command::termination_is_requested(){
@@ -124,11 +136,32 @@ int Drone_Command::send_command(uint8_t target_system,uint8_t target_component,u
 	int len = serial_port.write_message(msg);
 	if(len == 0){
 		Debug(RED,"COULD NOT WRITE COMMAND "<<(command)+".Trying again..\n",RESET);
+		len = serial_port.write_message(msg);
 	}
-	len = serial_port.write_message(msg);
 
 	return len;
 }
+
+int Drone_Command::send_message(uint8_t target_system,uint8_t target_component,mavlink_peer_position_t& position_message){
+	//decouple reader writer
+	mavlink_message_t message;
+	// mavlink_msg_global_position_int_encode(target_system,target_component,&message,&position_message);
+	mavlink_msg_peer_position_encode(target_system,target_component,&message,&position_message);
+	
+	std::lock_guard<std::mutex> lock(rw_mtx);
+	
+
+
+	int len = serial_port.write_message(message);
+	if(len == 0){
+		Debug(RED,"COULD NOT WRITE COMMAND.Trying again..\n",RESET);
+		len = serial_port.write_message(message);
+	}
+
+	return len;
+
+}
+
 
 
 int Drone_Command::enable_msg_interval(int msg_id){
@@ -282,8 +315,13 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 			// Debug(<<"ALT: "<<global_pos.alt<<"\n";
 			// Debug(<<"LONG: "<<global_pos.lon<<"\n";
 			// Debug(<<"LAT: "<< global_pos.lat<<"\n";
-			gps_file <<global_pos.lat<<" "<< global_pos.lon<<" "<<global_pos.alt<<" "<<global_pos.time_boot_ms<<"\n";
-			gps_file.flush();
+			//send data to other drone
+			if(is_icm_initialised() && !rx_only()){
+				icm->send_gps_position(get_system_id(),get_component_id(),global_pos,false);
+			}
+
+			// gps_file <<global_pos.lat<<" "<< global_pos.lon<<" "<<global_pos.alt<<" "<<global_pos.time_boot_ms<<"\n";
+			// gps_file.flush();
 			res = message_result(0,-1,-1);
 			return res;
 		}	
@@ -353,7 +391,23 @@ message_result Drone_Command::recv_data()
 }
 
 
+int Drone_Command::get_system_id(){
+	return system_id;
+}
 
+int Drone_Command::get_component_id(){
+	return component_id;
+}
+
+std::unique_ptr<Intercommunication>& Drone_Command::get_icm_obj(){
+	return icm;
+}
+bool Drone_Command::is_icm_initialised(){
+	return icm_initialised;
+}
+bool Drone_Command::rx_only(){
+	return icm_rx_only;
+}
 // int Drone_Command::guided_mode()
 // {
 // 	// Format the data:

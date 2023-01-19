@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.18"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Drone_command",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Drone_command::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Drone_command-22e59ef1c87c548e16fa.json",
+					"name" : "Drone_command",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_command_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_command_test-720f655d54ead452da19.json",
+					"name" : "drone_command_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "intercomm_test_flying_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-intercomm_test_flying_node-7e01fb14ca053ea28407.json",
+					"name" : "intercomm_test_flying_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "intercomm_test_ground_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-intercomm_test_ground_node-60553aa0e8653730000f.json",
+					"name" : "intercomm_test_ground_node",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/nitlab/Desktop/drones/Drone_command_wrapper/build",
+		"source" : "/home/nitlab/Desktop/drones/Drone_command_wrapper"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

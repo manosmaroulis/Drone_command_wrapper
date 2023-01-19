@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/intercomm_test_ground_node.dir/src/intercomm_test_ground_node.cpp.o -o intercomm_test_ground_node  libDrone_command.a -lpthread 

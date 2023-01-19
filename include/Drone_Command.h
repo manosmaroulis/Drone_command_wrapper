@@ -39,12 +39,14 @@
 // Mavlink related library
 #include "serial_port.h"
 #include <common/mavlink.h>
+#include<common/mavlink_msg_peer_position.h>
 #include <unistd.h>
 #include <thread>
 #include <mutex>
 #include <iostream>
 #include <fstream>
 #include<atomic>
+#include<Intercommunication.h>
 
 // Mavlink additional define
 #define GUIDED 15
@@ -127,6 +129,11 @@ class Drone_Command
 
 		//file descriptor for logging
 		std::ofstream gps_file;
+		
+		// Intercommunication* icm;
+		std::unique_ptr<Intercommunication>icm;
+		bool icm_initialised;
+		bool icm_rx_only;
 
 
 
@@ -136,6 +143,8 @@ class Drone_Command
 
 		~Drone_Command();
 		//WAIT FOR A HEARTBIT BEFORE PROCEEDING TO ANY ACTIVITY
+
+		void initialise_intercomm(char* myIP, char*peerIP,int myPort,int peerPort,bool rx_only);
 		void get_heartbit();
 		
 		// Get the current mode of the Vehicle:
@@ -182,6 +191,9 @@ class Drone_Command
 
 		// to do add more param arguments
 		int send_command(uint8_t target_system,uint8_t target_component,uint16_t command,bool confirmation,float param1=-1,float param2=-1);
+		
+		// send message encoded
+		int send_message(uint8_t target_system,uint8_t target_component,mavlink_peer_position_t& position_message);
 
 		// CHECK IF TERMINATION IS REQUESTED FROM ANOTHER THREAD
 		bool termination_is_requested();
@@ -190,7 +202,13 @@ class Drone_Command
 
 		//READ FROM SERIAL
 		bool serial_read(mavlink_message_t&);
-		
+
+
+		int get_system_id();
+		int get_component_id();
+		std::unique_ptr<Intercommunication>& get_icm_obj();
+		bool is_icm_initialised();
+		bool rx_only();
 		// void run();
 				
 };

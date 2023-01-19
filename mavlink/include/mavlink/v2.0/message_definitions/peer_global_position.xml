@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<mavlink>
+    <include>common.xml</include>
+    <dialect>4</dialect>
+
+    <messages>
+        <message id="369" name="PEER_POSITION">
+        <description>This message send position of a peer system (drone or gs)</description>
+       
+ 	
+	<field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
+	<field type="uint8" name="peer_id">system's id</field>
+ 	<field type="uint8" name="static">vehicle positon is static or dynamic</field>
+	<field type="int32_t" name="lat" units="degE7">Latitude, expressed</field>
+	<field type="int32_t" name="lon" units="degE7">Longitude, expressed</field>
+	<field type="int32_t" name="alt" units="mm">Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.</field>
+	<field type="int32_t" name="relative_alt" units="mm">Altitude above ground</field>
+	
+	<field type="uint16_t" name="hdg" units="cdeg" invalid="UINT16_MAX">Vehicle heading (yaw angle), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</field>
+    
+        </message>
+    </messages>
+</mavlink>
+

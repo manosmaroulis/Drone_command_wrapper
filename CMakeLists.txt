@@ -20,6 +20,10 @@ add_executable(drone_command_test src/drone_command_test.cpp)
 include_directories(drone_command_test ${INCLUDE_DIR} ${MAVLINK_DIR})
 target_link_libraries( drone_command_test ${PROJECT_NAME})
 
-add_executable(intercomm_test src/intercomm_test.cpp)
-include_directories(intercomm_test ${INCLUDE_DIR} ${MAVLINK_DIR})
-target_link_libraries( intercomm_test ${PROJECT_NAME})
+add_executable(intercomm_test_flying_node src/intercomm_test_flying_node.cpp)
+include_directories(intercomm_test_flying_node ${INCLUDE_DIR} ${MAVLINK_DIR})
+target_link_libraries( intercomm_test_flying_node ${PROJECT_NAME})
+
+add_executable(intercomm_test_ground_node src/intercomm_test_ground_node.cpp)
+include_directories(intercomm_test_ground_node ${INCLUDE_DIR} ${MAVLINK_DIR})
+target_link_libraries( intercomm_test_ground_node ${PROJECT_NAME})

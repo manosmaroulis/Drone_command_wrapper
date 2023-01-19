@@ -1,5 +1,8 @@
 // #include<iostream>
 // #include<string.h>
+#ifndef INTERCOMMUNICATION_H
+#define INTERCOMMUNICATION_H
+
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
@@ -23,6 +26,10 @@
 #endif
 
 #include <common/mavlink.h>
+#include<common/mavlink_msg_peer_position.h>
+
+// #include "Drone_Command.h"
+
 #define BUFFER_LENGTH 2041 // minimum buffer size that can be used with qnx (I don't know why)
 
 
@@ -43,7 +50,7 @@ private:
 
 
 public:
-    Intercommunication(char*, char*);
+    Intercommunication(char*, char*,int,int);
     ~Intercommunication();
 
     uint64_t microsSinceEpoch();
@@ -51,7 +58,8 @@ public:
     void get_gps_position();
 
     // It can be extended to whatever message we want, for this project we nee gps
-    int send_gps_position(mavlink_global_position_int_t);
-    int receive_gps_position();
+    int send_gps_position(int target_system,int target_component,mavlink_global_position_int_t, bool static_position);
+    int receive_gps_position(mavlink_peer_position_t& gps);
 };
 
+#endif

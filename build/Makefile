@@ -117,17 +117,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named intercomm_test
+# Target rules for targets named intercomm_test_ground_node
 
 # Build rule for target.
-intercomm_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 intercomm_test
-.PHONY : intercomm_test
+intercomm_test_ground_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 intercomm_test_ground_node
+.PHONY : intercomm_test_ground_node
 
 # fast build rule for target.
-intercomm_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test.dir/build.make CMakeFiles/intercomm_test.dir/build
-.PHONY : intercomm_test/fast
+intercomm_test_ground_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test_ground_node.dir/build.make CMakeFiles/intercomm_test_ground_node.dir/build
+.PHONY : intercomm_test_ground_node/fast
+
+#=============================================================================
+# Target rules for targets named intercomm_test_flying_node
+
+# Build rule for target.
+intercomm_test_flying_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 intercomm_test_flying_node
+.PHONY : intercomm_test_flying_node
+
+# fast build rule for target.
+intercomm_test_flying_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test_flying_node.dir/build.make CMakeFiles/intercomm_test_flying_node.dir/build
+.PHONY : intercomm_test_flying_node/fast
 
 #=============================================================================
 # Target rules for targets named drone_command_test
@@ -227,29 +240,53 @@ src/drone_command_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/drone_command_test.dir/build.make CMakeFiles/drone_command_test.dir/src/drone_command_test.cpp.s
 .PHONY : src/drone_command_test.cpp.s
 
-src/intercomm_test.o: src/intercomm_test.cpp.o
-.PHONY : src/intercomm_test.o
+src/intercomm_test_flying_node.o: src/intercomm_test_flying_node.cpp.o
+.PHONY : src/intercomm_test_flying_node.o
 
 # target to build an object file
-src/intercomm_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test.dir/build.make CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.o
-.PHONY : src/intercomm_test.cpp.o
+src/intercomm_test_flying_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test_flying_node.dir/build.make CMakeFiles/intercomm_test_flying_node.dir/src/intercomm_test_flying_node.cpp.o
+.PHONY : src/intercomm_test_flying_node.cpp.o
 
-src/intercomm_test.i: src/intercomm_test.cpp.i
-.PHONY : src/intercomm_test.i
+src/intercomm_test_flying_node.i: src/intercomm_test_flying_node.cpp.i
+.PHONY : src/intercomm_test_flying_node.i
 
 # target to preprocess a source file
-src/intercomm_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test.dir/build.make CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.i
-.PHONY : src/intercomm_test.cpp.i
+src/intercomm_test_flying_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test_flying_node.dir/build.make CMakeFiles/intercomm_test_flying_node.dir/src/intercomm_test_flying_node.cpp.i
+.PHONY : src/intercomm_test_flying_node.cpp.i
 
-src/intercomm_test.s: src/intercomm_test.cpp.s
-.PHONY : src/intercomm_test.s
+src/intercomm_test_flying_node.s: src/intercomm_test_flying_node.cpp.s
+.PHONY : src/intercomm_test_flying_node.s
 
 # target to generate assembly for a file
-src/intercomm_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test.dir/build.make CMakeFiles/intercomm_test.dir/src/intercomm_test.cpp.s
-.PHONY : src/intercomm_test.cpp.s
+src/intercomm_test_flying_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test_flying_node.dir/build.make CMakeFiles/intercomm_test_flying_node.dir/src/intercomm_test_flying_node.cpp.s
+.PHONY : src/intercomm_test_flying_node.cpp.s
+
+src/intercomm_test_ground_node.o: src/intercomm_test_ground_node.cpp.o
+.PHONY : src/intercomm_test_ground_node.o
+
+# target to build an object file
+src/intercomm_test_ground_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test_ground_node.dir/build.make CMakeFiles/intercomm_test_ground_node.dir/src/intercomm_test_ground_node.cpp.o
+.PHONY : src/intercomm_test_ground_node.cpp.o
+
+src/intercomm_test_ground_node.i: src/intercomm_test_ground_node.cpp.i
+.PHONY : src/intercomm_test_ground_node.i
+
+# target to preprocess a source file
+src/intercomm_test_ground_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test_ground_node.dir/build.make CMakeFiles/intercomm_test_ground_node.dir/src/intercomm_test_ground_node.cpp.i
+.PHONY : src/intercomm_test_ground_node.cpp.i
+
+src/intercomm_test_ground_node.s: src/intercomm_test_ground_node.cpp.s
+.PHONY : src/intercomm_test_ground_node.s
+
+# target to generate assembly for a file
+src/intercomm_test_ground_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/intercomm_test_ground_node.dir/build.make CMakeFiles/intercomm_test_ground_node.dir/src/intercomm_test_ground_node.cpp.s
+.PHONY : src/intercomm_test_ground_node.cpp.s
 
 src/iperf_wrapper.o: src/iperf_wrapper.cpp.o
 .PHONY : src/iperf_wrapper.o
@@ -333,7 +370,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Drone_command"
 	@echo "... drone_command_test"
-	@echo "... intercomm_test"
+	@echo "... intercomm_test_flying_node"
+	@echo "... intercomm_test_ground_node"
 	@echo "... src/Drone_Command.o"
 	@echo "... src/Drone_Command.i"
 	@echo "... src/Drone_Command.s"
@@ -343,9 +381,12 @@ help:
 	@echo "... src/drone_command_test.o"
 	@echo "... src/drone_command_test.i"
 	@echo "... src/drone_command_test.s"
-	@echo "... src/intercomm_test.o"
-	@echo "... src/intercomm_test.i"
-	@echo "... src/intercomm_test.s"
+	@echo "... src/intercomm_test_flying_node.o"
+	@echo "... src/intercomm_test_flying_node.i"
+	@echo "... src/intercomm_test_flying_node.s"
+	@echo "... src/intercomm_test_ground_node.o"
+	@echo "... src/intercomm_test_ground_node.i"
+	@echo "... src/intercomm_test_ground_node.s"
 	@echo "... src/iperf_wrapper.o"
 	@echo "... src/iperf_wrapper.i"
 	@echo "... src/iperf_wrapper.s"

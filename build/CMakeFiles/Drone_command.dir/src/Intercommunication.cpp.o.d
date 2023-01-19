@@ -118,14 +118,15 @@ CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/../mavlink_sha256.h \
- /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_heartbeat.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_sys_status.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_system_time.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_ping.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_change_operator_control.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_change_operator_control_ack.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_auth_key.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_link_node_status.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_set_mode.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_param_ack_transaction.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_param_request_read.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_param_request_list.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_param_value.h \
@@ -158,6 +159,7 @@ CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gps_global_origin.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_param_map_rc.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_mission_request_int.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_mission_changed.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_safety_set_allowed_area.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_safety_allowed_area.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_attitude_quaternion_cov.h \
@@ -174,6 +176,7 @@ CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_command_int.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_command_long.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_command_ack.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_command_cancel.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_manual_setpoint.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_set_attitude_target.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_attitude_target.h \
@@ -235,6 +238,9 @@ CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_battery_status.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_autopilot_version.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_landing_target.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_fence_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_mag_cal_report.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_efi_status.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_estimator_status.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_wind_cov.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gps_input.h \
@@ -269,9 +275,23 @@ CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_logging_data_acked.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_logging_ack.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_video_stream_information.h \
- /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_set_video_stream_settings.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_video_stream_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_camera_fov_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_camera_tracking_image_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_camera_tracking_geo_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gimbal_manager_information.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gimbal_manager_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gimbal_manager_set_attitude.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gimbal_device_information.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gimbal_device_set_attitude.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gimbal_device_attitude_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_autopilot_state_for_gimbal_device.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gimbal_manager_set_pitchyaw.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_gimbal_manager_set_manual_control.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_esc_info.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_esc_status.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_wifi_config_ap.h \
- /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_protocol_version.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_ais_vessel.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_uavcan_node_status.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_uavcan_node_info.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_param_ext_request_read.h \
@@ -283,4 +303,37 @@ CMakeFiles/Drone_command.dir/src/Intercommunication.cpp.o: \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_odometry.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_trajectory_representation_waypoints.h \
  /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_trajectory_representation_bezier.h \
- /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/../mavlink_get_info.h
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_cellular_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_isbd_link_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_cellular_config.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_raw_rpm.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_utm_global_position.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_debug_float_array.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_orbit_execution_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_smart_battery_info.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_generator_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_actuator_output_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_time_estimate_to_target.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_tunnel.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_onboard_computer_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_component_information.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_play_tune_v2.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_supported_tunes.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_event.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_current_event_sequence.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_request_event.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_response_event_error.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_wheel_distance.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_winch_status.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_open_drone_id_basic_id.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_open_drone_id_location.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_open_drone_id_authentication.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_open_drone_id_self_id.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_open_drone_id_system.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_open_drone_id_operator_id.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/./mavlink_msg_open_drone_id_message_pack.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/../minimal/minimal.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/../minimal/./mavlink_msg_heartbeat.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/../minimal/./mavlink_msg_protocol_version.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/../mavlink_get_info.h \
+ /home/nitlab/Desktop/drones/Drone_command_wrapper/mavlink/include/mavlink/v2.0/common/mavlink_msg_peer_position.h
