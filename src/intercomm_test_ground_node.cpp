@@ -80,16 +80,20 @@ int main(int argc,char* argv[]){
 		// mavlink_global_position_int_t meas;
 		mavlink_peer_position_t meas;
 		//receive peer_gps_position
-		if(dc_A.get_icm_obj()->receive_gps_position(meas)){
+		if(dc_A.get_icm_obj()->receive_gps_position(&meas)){
 			dc_A.send_message(dc_A.get_system_id(),dc_A.get_component_id(),meas);
 		}
 
 			mavlink_global_position_int_t global_pos;
 
-			dc_A.get_position(global_pos);
-			global_pos.alt -=1000;
-			global_pos.relative_alt -=20;
-			global_pos.lon=global_pos.lon-0.9;
+			dc_A.get_position(&global_pos);
+			printf("My lat %f my lon %f my alt %f my relative alt %d\n",(double)global_pos.lat*1.e-7,(double)global_pos.lon*1.e-7,(float)global_pos.alt*1.e-3f,global_pos.relative_alt);
+			printf("peer lat %f peer lon %f peer alt %f peer relative alt %d\n",(double)meas.lat*1.e-7,(double)meas.lon*1.e-7,(float)meas.alt*1.e-3f,meas.relative_alt);
+
+			// global_pos.alt -=1000;
+			// global_pos.relative_alt -=20;
+			// global_pos.lon=global_pos.lon-0.9;
+			global_pos.relative_alt= 2.0*1000.0f;
 			// global_pos.lat = meas.lat;
 			dc_A.get_icm_obj()->send_gps_position(dc_A.get_system_id(),dc_A.get_component_id(),global_pos,false);
 			printf("position sent\n");

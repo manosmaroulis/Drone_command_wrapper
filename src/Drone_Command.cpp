@@ -70,32 +70,32 @@ void Drone_Command::request_termination(){
 }
 
 
-void Drone_Command::get_position(mavlink_global_position_int_t&pos){
+void Drone_Command::get_position(mavlink_global_position_int_t*pos){
 	std::lock_guard<std::mutex> lock(mtx);
-	pos.alt = global_pos.alt;
-	pos.lat = global_pos.lat;
-	pos.lon = global_pos.lon;
-	pos.hdg = global_pos.hdg;
-	pos.relative_alt = global_pos.relative_alt;
-	pos.time_boot_ms = global_pos.time_boot_ms;
-	pos.vx = global_pos.vx;
-	pos.vy = global_pos.vy;
-	pos.vz = global_pos.vz;
+	pos->alt = global_pos.alt;
+	pos->lat = global_pos.lat;
+	pos->lon = global_pos.lon;
+	pos->hdg = global_pos.hdg;
+	pos->relative_alt = global_pos.relative_alt;
+	pos->time_boot_ms = global_pos.time_boot_ms;
+	pos->vx = global_pos.vx;
+	pos->vy = global_pos.vy;
+	pos->vz = global_pos.vz;
 
 	// return global_pos;
 }
 
-void Drone_Command::set_position(mavlink_global_position_int_t&pos){
+void Drone_Command::set_position(mavlink_global_position_int_t*pos){
 	std::lock_guard<std::mutex> lock(mtx);
-	global_pos.alt = (float)pos.alt*1.e-3f;
-	global_pos.lat = (double)pos.lat*1.e-7;
-	global_pos.lon = (double)pos.lon*1.e-7;
-	global_pos.hdg = pos.hdg;
-	global_pos.relative_alt = pos.relative_alt;
-	global_pos.time_boot_ms=pos.time_boot_ms;
-	global_pos.vx = pos.vx;
-	global_pos.vy = pos.vy;
-	global_pos.vz = pos.vz;
+	global_pos.alt = pos->alt;//*1.e-3f;
+	global_pos.lat = pos->lat;//*1.e-7;
+	global_pos.lon = pos->lon;//*1.e-7;
+	global_pos.hdg = pos->hdg;
+	global_pos.relative_alt = pos->relative_alt;
+	global_pos.time_boot_ms=pos->time_boot_ms;
+	global_pos.vx = pos->vx;
+	global_pos.vy = pos->vy;
+	global_pos.vz = pos->vz;
 }
 
 
@@ -354,7 +354,7 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 				icm->send_gps_position(get_system_id(),get_component_id(),pos,false);
 			}
 			if(is_icm_initialised()){
-				set_position(pos);
+				set_position(&pos);
 			}
 
 			// gps_file <<global_pos.lat<<" "<< global_pos.lon<<" "<<global_pos.alt<<" "<<global_pos.time_boot_ms<<"\n";

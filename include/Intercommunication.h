@@ -59,7 +59,7 @@ public:
 
     // It can be extended to whatever message we want, for this project we nee gps
     int send_gps_position(int target_system,int target_component,mavlink_global_position_int_t, bool static_position);
-    int receive_gps_position(mavlink_peer_position_t& gps);
+    int receive_gps_position(mavlink_peer_position_t* gps);
 };
 
 #endif

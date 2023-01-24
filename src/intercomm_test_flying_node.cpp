@@ -146,7 +146,7 @@ int main(int argc,char* argv[]){
 	while(1){
 			//receive peer_gps_position
 			peer_pos.static_pos= false;
-			if(dc_A.get_icm_obj()->receive_gps_position(peer_pos)){
+			if(dc_A.get_icm_obj()->receive_gps_position(&peer_pos)){
     			
 
 				if(peer_pos.static_pos){
@@ -154,17 +154,29 @@ int main(int argc,char* argv[]){
 					softPwmWrite(PWM_PIN,7);
 					break;
 				}
-				dc_A.get_position(gps);
+				dc_A.get_position(&gps);
+				// printf("My lat %f my lon %f my alt %f my relative alt %f\n",gps.lat,gps.lon,gps.alt,gps.relative_alt);
+				printf("My lat %f my lon %f my alt %f my relative alt %d\n",(double)gps.lat*1.e-7,(double)gps.lon*1.e-7,(float)gps.alt*1.e-3f,gps.relative_alt);
+				printf("peer lat %f peer lon %f peer alt %f peer relative alt %d\n",(double)peer_pos.lat*1.e-7,(double)peer_pos.lon*1.e-7,(float)peer_pos.alt*1.e-3f,peer_pos.relative_alt);
+				
+				float dist = get_distance_to_next_waypoint((double)gps.lat*1.e-7,(double)gps.lon*1.e-7,(double)peer_pos.lat*1.e-7,(double)peer_pos.lon*1.e-7);
 
-				float dist = get_distance_to_next_waypoint(gps.lat,gps.lon,peer_pos.lat,peer_pos.lon);
+
 				printf("dist------------------ %f\n",dist);
+				// printf("peer lat %f peer lon %f peer alt %f peer relative alt %f\n",peer_pos.lat,peer_pos.lon,peer_pos.alt,peer_pos.relative_alt);
 
 				// float delta_yaw = get_bearing_to_next_waypoint(gps.lat,gps.lon,peer_pos.lat,peer_pos.lon);
 				// if(delta_yaw>float(DEGREES_ERROR_THRESHOLD)){}
 				if(dist ==0){
 					continue;
 				}
-				float theta = atanf((gps.relative_alt-peer_pos.relative_alt)/dist)*float(RAD_TO_DEG);
+
+				auto  my_alt = (float)gps.relative_alt*1.e-3f;
+                auto my_peer_alt = (float)peer_pos.relative_alt*1.e-3f;
+
+
+
+				float theta = atanf((my_alt-my_peer_alt)/dist)*float(RAD_TO_DEG);
 				// float theta = wrap_pi(atanf((gps.relative_alt-peer_pos.relative_alt)/dist),double(-M_PI),double(M_PI))*float(RAD_TO_DEG);
 				//dc_A.send_message(dc_A.get_system_id(),dc_A.get_component_id(),meas);			//send to FMU 
 
@@ -181,16 +193,18 @@ int main(int argc,char* argv[]){
 						pwm_value = MAPPING_ANGLE_TO_PWM(double(theta_prev));
 					}
 
-					if(pwm_value<1 || pwm_value>25){
-						printf("YOUR ALGORITHM IS WRONg\n");
-					}else{
-						//set pwm values
-						softPwmWrite(PWM_PIN,pwm_value);
+					if(pwm_value<7){
+						// printf("YOUR ALGORITHM IS WRONg\n");
+						pwm_value= 7;
 					}
+					
+					if(pwm_value>25){pwm_value=25;}
+						//set pwm values
+					softPwmWrite(PWM_PIN,pwm_value);
+
 					usleep(100000);
 				}
             }
-		
 	}
 
 

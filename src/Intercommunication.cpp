@@ -81,7 +81,7 @@ int Intercommunication::send_gps_position(int target_system,int target_component
     
 }
 
-int Intercommunication::receive_gps_position(mavlink_peer_position_t& gps){
+int Intercommunication::receive_gps_position(mavlink_peer_position_t* gps){
     int recsize =recvfrom(sock,(void *)rec_buf, BUFFER_LENGTH, 0, (struct sockaddr *)&gcAddr, &fromlen);
 
 	unsigned int temp = 0;
@@ -105,15 +105,15 @@ int Intercommunication::receive_gps_position(mavlink_peer_position_t& gps){
 
         // dc.send_command(dc.system_id,dc.component_id,0);
         // mavlink_msg_global_position_int_decode(&msg,&gps);
-         mavlink_msg_peer_position_decode(&msg,&gps);
-        gps.lat= (double)gps.lat*1.e-7;
-        gps.lon= (double)gps.lon*1.e-7;
-        gps.alt = (float)gps.alt*1.e-3f;
+         mavlink_msg_peer_position_decode(&msg,gps);
+        // gps->lat= (double)gps->lat*1.e-7;
+        // gps->lon= (double)gps->lon*1.e-7;
+        // gps->alt = (float)gps->alt*1.e-3f;
         //send message sends only gps positions FIX IT
         // dc.send_message(dc.get_system_id(),dc.get_component_id(),gps);
 
        
-        // printf("\nGPS POSITION RECEIVED lat: %d lon: %d alt: %d hdg: %d\n",gps.lat,gps.lon,gps.alt,gps.hdg);
+        printf("\nGPS POSITION RECEIVED lat: %d lon: %d alt: %d hdg: %d\n",gps->lat,gps->lon,gps->alt,gps->hdg);
         // printf("\n %d %d %d %d\n",gps.relative_alt,gps.time_boot_ms,gps.vx,gps.vy,gps.vz);
     }
     memset(rec_buf, 0, BUFFER_LENGTH);
