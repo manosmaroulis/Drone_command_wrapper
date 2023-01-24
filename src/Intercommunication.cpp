@@ -99,13 +99,16 @@ int Intercommunication::receive_gps_position(mavlink_peer_position_t& gps){
             if (mavlink_parse_char(MAVLINK_COMM_0, rec_buf[i], &msg, &status))
             {
                 // Packet received
-                printf("\nReceived packet: SYS: %d, COMP: %d, LEN: %d, MSG ID: %d\n", msg.sysid, msg.compid, msg.len, msg.msgid);
+                // printf("\nReceived packet: SYS: %d, COMP: %d, LEN: %d, MSG ID: %d\n", msg.sysid, msg.compid, msg.len, msg.msgid);
             }
         }
 
         // dc.send_command(dc.system_id,dc.component_id,0);
         // mavlink_msg_global_position_int_decode(&msg,&gps);
          mavlink_msg_peer_position_decode(&msg,&gps);
+        gps.lat= (double)gps.lat*1.e-7;
+        gps.lon= (double)gps.lon*1.e-7;
+        gps.alt = (float)gps.alt*1.e-3f;
         //send message sends only gps positions FIX IT
         // dc.send_message(dc.get_system_id(),dc.get_component_id(),gps);
 

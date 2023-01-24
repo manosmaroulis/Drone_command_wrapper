@@ -29,7 +29,6 @@ int main(int argc,char* argv[]){
 		bw =std::string(argv[5]);
 	}
 	
-	char c;
 	Drone_Command dc_A;
 	wireless_interface_con wic;
 	signalInfo sigInfo;
@@ -48,40 +47,57 @@ int main(int argc,char* argv[]){
 	
 	std::thread receiver_thread([&](){
 		while(!dc_A.termination_is_requested()){
-			// mavlink_global_position_int_t meas;
-            mavlink_peer_position_t meas;
-			//receive peer_gps_position
-			if(dc_A.get_icm_obj()->receive_gps_position(meas)){
-    			dc_A.send_message(dc_A.get_system_id(),dc_A.get_component_id(),meas);
-            }
-			// icm.receive_gps_position(meas);// from peer
-			//send to FMU 
+		
 			//receive position from FMU, if gps is received it will be sent to the other node
 			dc_A.recv_data();// from drone
 		}
 	});
 
+	
+
+
 	// wrpr.iperf_start();
+	std::thread termination_thread([&](){
+		char c;
 
-	c=getchar();
+		c=getchar();
 
-	if(c=='q'){
-		// dc_A.send_arm_command(0);
-		wrpr.iperf_stop();
+		if(c=='q'){
+		
+			dc_A.request_termination();
 
-		dc_A.request_termination();
-        receiver_thread.join();
+			mavlink_global_position_int_t fake;
+			dc_A.get_icm_obj()->send_gps_position(dc_A.get_system_id(),dc_A.get_component_id(),fake,true);
+			// std::cout<<GREEN<<"APPLICATION EXITING\n"<<RESET;
+			return 0;
+		}
 
-        mavlink_global_position_int_t fake;
-        dc_A.get_icm_obj()->send_gps_position(dc_A.get_system_id(),dc_A.get_component_id(),fake,true);
-		// std::cout<<GREEN<<"APPLICATION EXITING\n"<<RESET;
-		return 0;
+
+
+	});	
+	
+	while(!dc_A.termination_is_requested()){
+		// mavlink_global_position_int_t meas;
+		mavlink_peer_position_t meas;
+		//receive peer_gps_position
+		if(dc_A.get_icm_obj()->receive_gps_position(meas)){
+			dc_A.send_message(dc_A.get_system_id(),dc_A.get_component_id(),meas);
+		}
+
+			mavlink_global_position_int_t global_pos;
+
+			dc_A.get_position(global_pos);
+			global_pos.alt -=1000;
+			global_pos.relative_alt -=20;
+			global_pos.lon=global_pos.lon-0.9;
+			// global_pos.lat = meas.lat;
+			dc_A.get_icm_obj()->send_gps_position(dc_A.get_system_id(),dc_A.get_component_id(),global_pos,false);
+			printf("position sent\n");
+		
 	}
-    // for(int i =0;i<10;i++){
 
-    
-    //     // icm.send_gps_position(meas);
-       
-    // }
+	receiver_thread.join();
+	termination_thread.join();
+
     return 0;
 }

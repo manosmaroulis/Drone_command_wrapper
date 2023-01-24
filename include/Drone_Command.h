@@ -134,7 +134,7 @@ class Drone_Command
 		std::unique_ptr<Intercommunication>icm;
 		bool icm_initialised;
 		bool icm_rx_only;
-
+		mavlink_global_position_int_t global_pos;
 
 
 	public:
@@ -158,6 +158,9 @@ class Drone_Command
 
 		int get_landed_state();
 		
+		void get_position(mavlink_global_position_int_t&pos);
+
+		void set_position(mavlink_global_position_int_t&pos);
 		//USED INTERNALLY TO CHANGE STATE, USER SHOULD USE send_arm_command(int state)
 		void arm(bool state); //true is armed false is disarmed
 		

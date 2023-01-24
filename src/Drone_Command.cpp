@@ -69,6 +69,37 @@ void Drone_Command::request_termination(){
 	is_not_end = false;
 }
 
+
+void Drone_Command::get_position(mavlink_global_position_int_t&pos){
+	std::lock_guard<std::mutex> lock(mtx);
+	pos.alt = global_pos.alt;
+	pos.lat = global_pos.lat;
+	pos.lon = global_pos.lon;
+	pos.hdg = global_pos.hdg;
+	pos.relative_alt = global_pos.relative_alt;
+	pos.time_boot_ms = global_pos.time_boot_ms;
+	pos.vx = global_pos.vx;
+	pos.vy = global_pos.vy;
+	pos.vz = global_pos.vz;
+
+	// return global_pos;
+}
+
+void Drone_Command::set_position(mavlink_global_position_int_t&pos){
+	std::lock_guard<std::mutex> lock(mtx);
+	global_pos.alt = (float)pos.alt*1.e-3f;
+	global_pos.lat = (double)pos.lat*1.e-7;
+	global_pos.lon = (double)pos.lon*1.e-7;
+	global_pos.hdg = pos.hdg;
+	global_pos.relative_alt = pos.relative_alt;
+	global_pos.time_boot_ms=pos.time_boot_ms;
+	global_pos.vx = pos.vx;
+	global_pos.vy = pos.vy;
+	global_pos.vz = pos.vz;
+}
+
+
+
 void Drone_Command::get_heartbit(){	
 
 
@@ -148,6 +179,8 @@ int Drone_Command::send_message(uint8_t target_system,uint8_t target_component,m
 	// mavlink_msg_global_position_int_encode(target_system,target_component,&message,&position_message);
 	mavlink_msg_peer_position_encode(target_system,target_component,&message,&position_message);
 	
+
+	std::cout<<message.msgid<<" MESSAGE ID SENDING TO AUTOPILOT\n";
 	std::lock_guard<std::mutex> lock(rw_mtx);
 	
 
@@ -168,7 +201,7 @@ int Drone_Command::enable_msg_interval(int msg_id){
 
 // MAVLINK_MSG_ID_GLOBAL_POSITION_INT
 	//param 2 = rate, default_rate =0
-	int len = send_command(system_id,component_id,MAV_CMD_SET_MESSAGE_INTERVAL,true,msg_id,1000000);
+	int len = send_command(system_id,component_id,MAV_CMD_SET_MESSAGE_INTERVAL,true,msg_id,2000000);
 	
 	return len;
 }
@@ -238,12 +271,12 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 
 			mavlink_msg_heartbeat_decode(msg, &hb);
 			
-			Debug(WHITE,"SystemID: "<<msg->sysid<<"\n",RESET);
-			Debug(WHITE,"Component ID:"<< msg->compid<<"\n",RESET);
-			Debug(WHITE,"system status:"<< hb.system_status<<"\n",RESET);
-			Debug(WHITE,"custom mode:"<< hb.custom_mode<<"\n",RESET);
-			Debug(WHITE,"autopilot:"<< hb.autopilot<<"\n",RESET);
-			Debug(WHITE,"type:"<< hb.type<<"\n",RESET);
+			// Debug(WHITE,"SystemID: "<<msg->sysid<<"\n",RESET);
+			// Debug(WHITE,"Component ID:"<< msg->compid<<"\n",RESET);
+			// Debug(WHITE,"system status:"<< hb.system_status<<"\n",RESET);
+			// Debug(WHITE,"custom mode:"<< hb.custom_mode<<"\n",RESET);
+			// Debug(WHITE,"autopilot:"<< hb.autopilot<<"\n",RESET);
+			// Debug(WHITE,"type:"<< hb.type<<"\n",RESET);
 			
 			// Check the arm status:
 			// int armed_state = hb.base_mode & MAV_MODE_FLAG_SAFETY_ARMED;
@@ -308,8 +341,8 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 		}
 		case MAVLINK_MSG_ID_GLOBAL_POSITION_INT:
 		{
-			mavlink_global_position_int_t global_pos;
-			mavlink_msg_global_position_int_decode(msg,&global_pos);
+			mavlink_global_position_int_t pos;
+			mavlink_msg_global_position_int_decode(msg,&pos);
 			Debug(GREEN,"GPS READING\n",RESET);
 			// Debug(<<"TIME SINCE BOOT: "<<global_pos.time_boot_ms<<"\n";
 			// Debug(<<"ALT: "<<global_pos.alt<<"\n";
@@ -317,7 +350,11 @@ message_result Drone_Command::handle_message(mavlink_message_t  *msg)
 			// Debug(<<"LAT: "<< global_pos.lat<<"\n";
 			//send data to other drone
 			if(is_icm_initialised() && !rx_only()){
-				icm->send_gps_position(get_system_id(),get_component_id(),global_pos,false);
+				Debug(GREEN,"position sent\n",RESET);
+				icm->send_gps_position(get_system_id(),get_component_id(),pos,false);
+			}
+			if(is_icm_initialised()){
+				set_position(pos);
 			}
 
 			// gps_file <<global_pos.lat<<" "<< global_pos.lon<<" "<<global_pos.alt<<" "<<global_pos.time_boot_ms<<"\n";

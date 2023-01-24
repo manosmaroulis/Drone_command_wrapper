@@ -54,7 +54,8 @@ void iperf_wrapper::iperf_start(){
     do{
 
         ret = system(cmd.c_str());
-        
+        std::cout<<"PING\n";
+
     }while (ret!=0);
   
 
